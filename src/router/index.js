@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Cart from 'page/Cart'
+import Cart from 'page/Cart';
+import Goods from 'page/goods'
 
 Vue.use(VueRouter);
 
@@ -20,11 +21,19 @@ let router = new VueRouter({
             //     requiresAuth: true
             // }
         },
-        // 404
         {
-            path: '*',
-            component: NotFound
+            name: 'Goods',
+            path: '/goods',
+            component: Goods,
+            // meta: {
+            //     requiresAuth: true
+            // }
         }
+        // 404
+        // {
+        //     path: '*',
+        //     component: NotFound
+        // }
     ]
 });
 
