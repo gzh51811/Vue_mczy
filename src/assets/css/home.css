@@ -1,0 +1,234 @@
+/*
+  @ editor:wusiyu
+    time:2019.3.15
+*/
+html{
+    font-size: 26.67vw;
+}
+
+/* 首页 */
+.box{
+    width: 100vw;
+    height: 100vh;
+    background: #eeeeee;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 头部 */
+header{
+    height: auto;
+    /* background: #ffc747; */
+    display: flex;
+    flex-direction: column;
+}
+
+.download{
+    width: 100%;
+    height:1.56rem;
+    background: greenyellow;
+    flex:1;
+    display: flex;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+}
+
+.download img{
+    width: 100%;
+    opacity: 0.9;
+}
+
+.sasa_head{
+    padding-top:1.56rem;
+    height: 1.365333rem;
+    width: 100%;
+    overflow: hidden;
+    background-color: #ed3f7e;
+}
+
+.sasa_head .home-nav{
+    margin: 0 auto;
+    width: 94%;
+}
+
+.sasa_head .home-nav .logo{
+    width: 50%;
+    height:1.365333rem;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto 0 17%;
+    margin-top: 3px;
+    display: inline-block;
+}
+
+.sasa_head .home-nav .logo img{
+    height: .746667rem;
+    /* vertical-align: middle; */
+    margin: 0 auto 0 auto;
+    margin-top: .146667rem;
+    margin-right: 6%;
+    display: block;
+}
+
+.sasa_head .home-nav .search_action{
+    display: inline-block;
+}
+
+.sasa_head .home-nav .icon-sousuo{
+    color: white;
+    font-size: .746667rem;
+    display: block;
+    text-align: center;
+    padding-left: .133333rem;
+    padding-top: .24rem;
+}
+
+/* banner */
+.banner{
+    width: 100%;
+    height: 5.525333rem;
+    display: flex;
+    background-size: cover;
+    
+}
+
+.swiper-container {
+    width: 100%;
+    height: 5.525333rem;
+    background: #ccc;
+    color: white
+  }
+
+.promise_frame{
+    width: 100%;
+    padding: 0px 0 0px;
+    margin-bottom: -.066667rem;
+    background: white;
+}
+
+.promise_name{
+    float: left;
+    width: 70%!important;
+    text-align: left!important;
+    margin-left: 5%!important;
+    font-weight: normal!important;
+    height: .533333rem!important;
+    line-height: .533333rem!important;
+}
+
+.broadcast_name{
+    color: #fc3f83;
+    font-weight: 600;
+    font-size: .306667rem!important;
+    text-align: center;
+    float: left;
+    height: .4rem;
+    line-height: .4rem;
+    width: .666667rem;
+    margin-left: .133333rem;
+    margin-top: .066667rem;
+} 
+
+.index_four_buttons{
+    width: 90%;
+    height: 2rem;
+    padding: 2.5% 5% 1%;
+    background-color: #fff;
+} 
+
+.index_four_buttons .index_four_buttons_item{
+    width: 25%;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+
+.index_four_btn_img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.index_four_buttons_item a{
+    display: block;
+    color: #a3a3a3;
+    text-decoration: none;
+}
+
+.broadcast {
+    /* font-size: .16rem; */
+    width: 100%;
+    height: 1.3rem;
+    /* padding: 3% 0; */
+    background-color: #fff;
+    border-top: .013333rem solid #eeeeee;
+    overflow: hidden;
+    padding-top: .5rem;
+}
+
+#broadcast_name {
+    color: #fc3f83;
+    font-weight: 600;
+    font-size: .4rem;
+    text-align: center;
+    float: left;
+    height:.8rem;
+    line-height: .7rem;
+    width: 1.333333rem;
+    margin-left: .5rem;
+}
+
+#broadcast_name span {
+    font-weight: 100 !important;
+}
+
+.broadcast .laba {
+    width: .266667rem;
+    height: .266667rem;
+    /* background-size: .266667rem .266667rem; */
+    font-size: .666667rem;
+    float: left;
+    color: #fc3f83;
+    
+}
+
+.broadcast_content {
+    max-width: calc(100% - 1.466667rem);
+    height: 60%;
+    overflow: hidden;
+    float: left;
+    margin-left: .533333rem;
+    
+}
+
+.broadcast_content_inner {
+    height: 2.4rem;
+}
+
+.broadcast_adv {
+    width: 100%;
+    height: .4rem;
+   
+}
+.broadcast_adv_title {
+    width: 100%;
+    height: .4rem;
+    line-height: .306667rem;
+    font-size: .333333rem;
+    color: #000;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.broadcast_adv a {
+    text-decoration: none;
+    color: #999999;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.main1{
+
+}
