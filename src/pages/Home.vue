@@ -93,7 +93,9 @@
     </header>
 
     <!-- main1 -->
-    <section class="main1"></section>
+    <section class="main1">
+      <section></section>
+    </section>
   </section>
 </template>
    
