@@ -1,9 +1,14 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+<<<<<<< HEAD
 import Cart from './../pages/cart.vue';
 import NotFound from './../pages/NotFound.vue';
 import Account from './../pages/Account.vue';
 import Login from './../pages/Login.vue';
+=======
+import Cart from 'page/Cart';
+import Goods from 'page/goods'
+>>>>>>> 0f88ddeb69f6f5c0a130dc44dc8485c94c9a8231
 
 Vue.use(VueRouter);
 
@@ -23,6 +28,7 @@ let router = new VueRouter({
             //     requiresAuth: true
             // }
         },
+<<<<<<< HEAD
         {
             name: 'account',
             path: '/account',
@@ -38,10 +44,21 @@ let router = new VueRouter({
            
         },
         // 404
+=======
+>>>>>>> 0f88ddeb69f6f5c0a130dc44dc8485c94c9a8231
         {
-            path: '*',
-            component: NotFound
+            name: 'Goods',
+            path: '/goods',
+            component: Goods,
+            // meta: {
+            //     requiresAuth: true
+            // }
         }
+        // 404
+        // {
+        //     path: '*',
+        //     component: NotFound
+        // }
     ]
 });
 
