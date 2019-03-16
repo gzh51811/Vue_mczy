@@ -2,11 +2,11 @@
   <div class="sasa-header">
     <div class="home-nav c-fix">
       <a href="javascript:void(0)" class="item" title="首页">
-        <i class="iconfont icon-fanhui"></i>
+        <i class="iconfont icon-fanhui" @click="goback()"></i>
       </a>
       <a class="a-name">{{headNavigation}}</a>
       <a href="javascript:void(0)" class="item" title="首页">
-        <i class="iconfont icon-tiaoshi"></i>
+        <i class="iconfont icon-home" @click="gotoHome()"></i>
       </a>
     </div>
   </div>
@@ -15,6 +15,7 @@
 
 
 <script>
+import "./../assets/font_cn2qla3535/iconfont.css";
 export default {
   data() {
     return {
@@ -37,6 +38,14 @@ export default {
 
       default:
         break;
+    }
+  },
+  methods: {
+    gotoHome() {
+      this.$router.push('home')
+    },
+    goback() {
+      this.$router.go(-1);
     }
   }
 };

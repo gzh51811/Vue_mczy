@@ -11,88 +11,34 @@
           <i class="iconfont user icon-user"></i>
         </div>
         <div class="mem-base">
-          <span id="mem_name">明明</span>
+          <span id="mem_name" >{{username}}</span>
           <div class="mem-level">
             <i class="iconfont money icon-money"></i>
             <span>0积分</span>
           </div>
         </div>
         <div class="mem-experience">
-          <a href="javascript:void(0)">
+          <a @click="exit">
             <i class="iconfont"></i>退出
           </a>
         </div>
       </div>
 
       <ul class="mem-menu">
-        <li>
+        <li v-for="(item,idx) in iconfont_1" :key="idx">
           <a href="javascript:void(0)">
-            <i class="iconfont icon-fenlei"></i>我的订单
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="iconfont"></i>我的优惠券
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="iconfont"></i>我的站内信
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="iconfont"></i>我的收藏
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="iconfont"></i>到货通知
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="iconfont"></i>我的评价
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="iconfont"></i>收货地址管理
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="iconfont"></i>VIP贵宾卡绑定
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="gifticon iconfont icon-yanchurili"></i> 积分中心
+            <i class="iconfont" :class="item.icon"></i>{{item.text}}
           </a>
         </li>
       </ul>
 
       <ul class="mem-menu">
-        <li>
+        <li v-for="(item,idx) in iconfont_2" :key="idx">
           <a href="javascript:void(0)">
-            <i class="iconfont"></i>浏览记录
+            <i class="iconfont" :class="item.icon"></i>{{item.text}}
           </a>
         </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="iconfont"></i>帮助中心
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="iconfont"></i>门店搜查
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="iconfont"></i>在线客服
-          </a>
-        </li>
+
       </ul>
     </div>
     <!-- 底部 -->
@@ -113,32 +59,81 @@
 //引入rem.js
 import "./../js/rem.js";
 import "./../assets/font_nh0ryqkzbi/iconfont.css";
+import axios from "axios";
 
 
+import Vue from "vue";
 import HeadNavigation from './../components/HeadNavigation.vue';
+import MintUI from "mint-ui";
+import { MessageBox } from "mint-ui";
+import "mint-ui/lib/style.css";
+Vue.use(MintUI);
 export default {
     data() {
         return{
-
+          username: '',
+          user: {},
+          iconfont_1: [
+                {icon :"icon-fenlei",text: "我的订单"},
+                {icon :"icon-faxian",text: "我的收藏"},
+                {icon :"icon-weishiyong",text: "已付款"},
+                {icon : "icon-zhuanru",text: "待评价"},
+                {icon : "icon-faxianjihuo",text: "我的优惠券"},
+                {icon :  "icon-bianji",text: "我的评价"}, 
+                {icon :  "icon-jichuguanli",text: "我的帮助"},
+                {icon :   "icon-yishouquan",text: "到货通知"}, 
+                {icon :   "icon-peiwangyindao",text: "联系我们"}
+              ],
+        iconfont_2: [
+                {icon :"icon-renjijiaohu",text: "浏览记录"},
+                {icon :"icon-shiyongwendang",text: "帮助中心"},
+                {icon :"icon-shebeikaifa",text: "门店搜查"},
+                {icon : "icon-jishufuwu",text: "在线客服"},
+                
+              ]
         }
     },
     components: {
         HeadNavigation
+    },
+    mounted() {
+      this.user.token = localStorage.getItem('token');
+     
+      if(this.user.token){
+          //判断本地是否有token
+        console.log(this.user.token)
+        this.username = localStorage.getItem('username');
+         axios.post("http://localhost:1888/api/login", {
+          m: "token",
+          data:this.user.token   
+        });
+    
+        }
+    },
+    methods: {
+        exit() {
+            if(this.user.token) {
+            localStorage.removeItem('token');
+            //console.log(res)
+            localStorage.removeItem('username');
+            MessageBox('提示', '退出成功');
+            this.user.token = '';
+            }
+            
+        }
     }
 };
 </script>
 
 
 
-<style scoped  lang="scss">
+<style   lang="scss">
 
 //内容
+
 .full-screen {
   display: flex;
   flex-direction: column;
-  .mem-info,
-  .mem-menu {
-  }
   .mem-info {
     display: flex;
     height: 1.733333rem;
