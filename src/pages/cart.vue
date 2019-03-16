@@ -21,15 +21,15 @@
           </dl>
         </div>
         <ul>
-          <li>
+          <li v-for="goods in goodslist" :key="goods.goods_id">
             <input type="checkbox" class="xzk">
             <div class="ui-cart-product-price">
-              <strong class="ui-color-pink J-subtotal">￥36.0</strong>
+              <strong class="ui-color-pink J-subtotal">￥{{parseFloat(goods.price).toFixed(2)}}</strong>
             </div>
             <div class="ui-cart-product-imgcont">
               <div class="ui-cart-product-img">
                 <a href="###" target="_blank">
-                  <img src="../assets/111.jpg" alt>
+                  <img :src="goods.product_image" alt>
                 </a>
               </div>
             </div>
@@ -40,12 +40,16 @@
             </div>
             <div class="ui-cart-product-info">
               <div class="ui-cart-product-name">
-                <a href="###">旁氏 美白防斑控油防晒粉(闪蜜BB)</a>
+                <a href="###">{{goods.brand_name}} {{goods.goods_name}}</a>
               </div>
               <div class="ui-cart-product-qty J-qty-cont">
-                <a href="javascript:;" class="ui-cart-product-qtybtn J-qty-dec">-</a>
-                <input type="text" class="J-qty-input" id value="3">
-                <a href="javascript:;" class="ui-cart-product-qtybtn J-qty-inc">+</a>
+                <el-input-number
+                  v-model="goods.qty"
+                  @change="handleChange"
+                  :min="1"
+                  :max="99"
+                  size="small"
+                ></el-input-number>
               </div>
               <!-- 商品促销 -->
               <ul class="ui-cart-product-promotion J-cart-promotion">
@@ -85,8 +89,45 @@
 </template>
 <script>
 import "./../assets/font_cn2qla3535/iconfont.css";
-export default {};
+export default {
+  data() {
+    return {
+      goodslist: []
+    };
+  },
+  methods: {
+    handleChange(value) {
+      console.log(value);
+    }
+  },
+
+  created() {
+    let { id: id } = this.$route.query;
+    this.$axios
+      .get("http://localhost:4399/api/cart", {
+        params: {
+          id
+        }
+      })
+      .then(res => {
+        // console.log(res);
+        let arr = res.data;
+        this.goodslist = arr;
+
+        console.log(this.goodslist);
+      });
+  }
+};
 </script>
+
+
+
+
+
+
+
+
+
 
 <style lang="scss" scope>
 * {
@@ -222,42 +263,7 @@ body {
               }
             }
           }
-          .ui-cart-product-qty {
-            width: 1.96 * 2rem;
-            height: 0.52 * 2rem;
-            padding-top: 0.146667 * 2rem;
-            font-size: 0;
-            letter-spacing: -3px;
-            .ui-cart-product-qtybtn {
-              display: inline-block;
-              font-size: 0.2 * 2rem;
-              width: 0.373333 * 2rem;
-              height: 0.373333 * 2rem;
-              background-color: #f2f2f2;
-              color: #404041;
-              text-align: center;
-              font-weight: 700;
-              border: 1px solid #e2e2e2;
-              line-height: 0.373333 * 2rem;
-              letter-spacing: 0;
-            }
-            input[type="text"] {
-              display: inline-block;
-              font-size: 0.226667 * 2rem;
-              width: 0.52 * 2rem;
-              border: 1px solid #e2e2e2;
-              border-left-width: 0;
-              border-right-width: 0;
-              vertical-align: top;
-              letter-spacing: 0;
-              height: 0.373333 * 2rem;
-              text-align: center;
-              line-height: 0.373333 * 2rem;
-              box-shadow: none;
-              border-radius: 0;
-              outline: 0 none;
-            }
-          }
+
           .ui-cart-product-promotion {
             width: 1.96 * 2rem;
             height: 0.333333 * 2rem;
