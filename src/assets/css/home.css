@@ -10,7 +10,7 @@ html{
 .box{
     width: 100vw;
     height: 100vh;
-    background: #eeeeee;
+    /* background: #eeeeee; */
     display: flex;
     flex-direction: column;
 }
@@ -19,14 +19,14 @@ html{
 header{
     height: auto;
     /* background: #ffc747; */
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
 }
 
 .download{
     width: 100%;
     height:1.56rem;
-    background: greenyellow;
+    /* background: greenyellow; */
     flex:1;
     display: flex;
     position: fixed;
@@ -40,7 +40,7 @@ header{
 }
 
 .sasa_head{
-    padding-top:1.56rem;
+    margin-top:1.56rem;
     height: 1.365333rem;
     width: 100%;
     overflow: hidden;
@@ -100,6 +100,11 @@ header{
     background: #ccc;
     color: white
   }
+
+.autoimg{
+    width: 100%;
+    height: 5.525333rem;
+} 
 
 .promise_frame{
     width: 100%;
@@ -163,6 +168,7 @@ header{
     /* padding: 3% 0; */
     background-color: #fff;
     border-top: .013333rem solid #eeeeee;
+    border-bottom: .3rem solid #eee;
     overflow: hidden;
     padding-top: .5rem;
 }
@@ -230,5 +236,152 @@ header{
 }
 
 .main1{
+    /* height:0.05rem; */
+    height: auto;
+    /* background: #ffc747; */
+    display: flex;
+    flex-direction: column;
+}
+.promo2m{
+    width: 100%;
+    background: white;
+    margin: .3rem 0;
+}
+
+.promo2m .promo2mA {
+    float: left;
+    width: 50%;
+    height:3rem;
+    /* border-left: .0625rem solid #eee; */
+    /* border-top: .0625rem solid #eee; */
+    border-bottom: .0625rem solid #eee;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+ 
+.promo2mA .promo2m_titleA {
+    font-size: 1.25em;
+    float: left;
+    padding: 7% 8% 0%;
+    width: 80%;
+    font-weight: bold;
+    color: #000;
+}
+
+
+.promo2mA .promo2m_taglineA {
+    font-size: .85em;
+    float: left;
+    padding: 0 8%;
+    width: 80%;
+    color: #a3a3a3;
+    margin-top: .125rem;
+}
+
+.promo2_go_btn {
+    font-size: .8em;
+    color: white;
+    float: left;
+    margin-top: 1.8em;
+    margin-left: 8%;
+    padding: .125rem .5rem;
+    background: #fc3f83;
+    -webkit-border-radius: .9375rem;
+    -moz-border-radius: .9375rem;
+    border-radius: .9375rem;
+}
+
+.promo2m .promo2mC {
+    float: left;
+    width: 33%;
+    height: 4.1rem;
+    border-left: .0625rem solid #eee;
+    border-bottom: .3rem solid #eee;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.promo2m_titleB {
+    color: #000;
+    font-size: 1.25em;
+    float: left;
+    padding: .5em 0 0;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.promo2m_taglineB {
+    color: #a3a3a3;
+    font-size: .85em;
+    float: left;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+
+/* .sasa_mustcheck >.sasa_mustcheck_head_wrapper {
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+} */
+
+.sasa_mustcheck_head img {
+    width: 100%;
+    /* height: 0.95625rem; */
+    padding: 2% 0;
+    background-size: 1300px 21px;
+
+}
+
+
+.mustcheck_item {
+    width: 100%;
+    background-color: #fff;
+    /* margin-bottom: 0.6em; */
+    border-bottom: .2rem solid #eee;
+}
+.mustcheck_lg_img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.mustcheck_title {
+    width: 90%;
+    height: 38px;
+    padding: 4.5% 5%;
+}
+.mustcheck_titName {
+    font-size: 1.25em;
+    height: 20px;
+    line-height: 20px;
+    color: #dc3f7e;
+    margin-bottom: 4px;
+}
+.mustcheck_subtitName {
+    float: left;
+}
+.mustcheck_date, .mustcheck_subtitName {
+    font-size: 1.1em;
+    color: #999;
+    height: 14px;
+    line-height: 14px;
+    font-weight: bold;
+}
+.mustcheck_date {
+    float: right;
+}
+
+
+.limit_lg_head img {
+    width: 100%;
+    /* height: 0.95625rem; */
+    padding: 2% 0;
+    background-size: 1300px 21px;
 
 }
