@@ -147,13 +147,13 @@
     </section>
     <!-- </section> -->
     <!-- 每日必看 -->
-    <div class="sasa_mustcheck_head">
+    <section class="sasa_mustcheck_head">
       <img src="../assets/images/must_check.png">
-    </div>
+    </section>
 
-    <div class="mustcheck">
-      <div style="opacity: 1; display: block;">
-        <div
+    <section class="mustcheck">
+      <section style="opacity: 1; display: block;">
+        <section
           class="mustcheck_item"
           style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);"
           v-for="(mustchecks) in  mustcheck"
@@ -162,19 +162,179 @@
           <a href="javascript:void(0)" target="_blank">
             <img class="mustcheck_lg_img" :src="mustchecks.imgurl">
           </a>
-          <div class="mustcheck_title">
-            <div class="mustcheck_titName">{{mustchecks.titname}}</div>
-            <div class="mustcheck_subtitName">{{mustchecks.subtitname}}</div>
-            <div class="mustcheck_date">{{mustchecks.title}}</div>
-          </div>
-        </div>
-      </div>
-    </div>
+          <section class="mustcheck_title">
+            <section class="mustcheck_titName">{{mustchecks.titname}}</section>
+            <section class="mustcheck_subtitName">{{mustchecks.subtitname}}</section>
+            <section class="mustcheck_date">{{mustchecks.title}}</section>
+          </section>
+        </section>
+      </section>
+    </section>
 
     <!-- 限时特卖 -->
-    <div class="limit_lg_head">
+    <section class="limit_lg_head">
       <img src="../assets/images/limitted_offer.png">
-    </div>
+      <section class="limit_lg_selected_item">
+        <img class="limit_lg_selected_bkg" src="../assets/images/onsale.jpg">
+        <div class="limit_lg_selected_new_icon"></div>
+
+        <div class="limit_lg_selected_right">
+          <div class="limit_lg_selected_countdown" style="line-height:.6rem">
+            剩余
+            <span class="hour">18</span>:
+            <span class="hour">18</span>:
+            <span class="minute">46</span>
+          </div>
+          <div class="limit_lg_selected_intro">
+            <b class="yew">国内保税仓 零扣关 包税</b>
+            <p>伊丽莎白 · 雅顿&nbsp;升级版金装时空修护胶囊 金胶&nbsp;60粒</p>
+          </div>
+          <div class="limit_lg_selected_price">
+            <div class="limit_lg_selected_discount">
+              <span class="limit_lg_selected_discount_num">6.8</span>
+              <span class="limit_lg_selected_discount_sig">折</span>
+            </div>
+            <p>
+              <span class="limit_lg_selected_price_cur">￥388</span>
+              <span class="limit_lg_selected_price_old">
+                <del>￥570</del>
+              </span>
+            </p>
+          </div>
+          <div class="limit_lg_selected_opt">
+            <div class="limit_lg_selected_btn limit_lg_selected_btn_enable">
+              <span>立即抢购</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="limit_lg_more">
+        <a href="javascript:void(0)">查看更多特卖</a>
+      </div>
+    </section>
+
+    <!-- 护肤排行榜 -->
+    <section class="ranking_item">
+      <div class="ranking_title">护肤排行榜</div>
+      <section class="ranking_productlist">
+        <section class="swiper-container3">
+          <section class="swiper-wrapper">
+            <section class="swiper-slide">
+              <a href="javascript:void(0)" class="ranking_product">
+                <div class="ranking_product_img_wrapper">
+                  <img src="../assets/images/onsale.png">
+                </div>
+                <div class="ranking_product_intro">海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜&nbsp;</div>
+                <p class="ranking_product_price">
+                  <span class="ranking_product_price_cur">￥42</span>
+                  <span class="ranking_product_price_old">
+                    <del>￥99</del>
+                  </span>
+                </p>
+              </a>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+
+    <!-- 个护排行榜 -->
+    <section class="ranking_item">
+      <div class="ranking_title">个护排行榜</div>
+      <section class="ranking_productlist">
+        <section class="swiper-container3">
+          <section class="swiper-wrapper">
+            <section class="swiper-slide">
+              <a href="javascript:void(0)" class="ranking_product">
+                <div class="ranking_product_img_wrapper">
+                  <img src="../assets/images/onsale.png">
+                </div>
+                <div class="ranking_product_intro">海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜&nbsp;</div>
+                <p class="ranking_product_price">
+                  <span class="ranking_product_price_cur">￥42</span>
+                  <span class="ranking_product_price_old">
+                    <del>￥99</del>
+                  </span>
+                </p>
+              </a>
+              <a href="javascript:void(0)" class="ranking_product">
+                <div class="ranking_product_img_wrapper">
+                  <img src="../assets/images/onsale.png">
+                </div>
+                <div class="ranking_product_intro">海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜&nbsp;</div>
+                <p class="ranking_product_price">
+                  <span class="ranking_product_price_cur">￥42</span>
+                  <span class="ranking_product_price_old">
+                    <del>￥99</del>
+                  </span>
+                </p>
+              </a>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+
+    <!-- 彩妆排行榜 -->
+    <section class="ranking_item">
+      <div class="ranking_title">彩妆排行榜</div>
+      <section class="ranking_productlist">
+        <section class="swiper-container3">
+          <section class="swiper-wrapper">
+            <section class="swiper-slide">
+              <a href="javascript:void(0)" class="ranking_product">
+                <div class="ranking_product_img_wrapper">
+                  <img src="../assets/images/onsale.png">
+                </div>
+                <div class="ranking_product_intro">海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜&nbsp;</div>
+                <p class="ranking_product_price">
+                  <span class="ranking_product_price_cur">￥42</span>
+                  <span class="ranking_product_price_old">
+                    <del>￥99</del>
+                  </span>
+                </p>
+              </a>
+            </section>
+          </section>
+        </section>
+      </section>
+      <section class="sasafooter full-screen t-c">
+        <div class="footercopy">
+          <span>
+            <p>Copyright © 2019.1.15 Sa Sa dot Com Limited.</p>
+            <p style="line-height: 1em;">All Rights Reserved. 版权所有</p>
+            <p style="line-height: 1em;">
+              <a
+                href="javascript:void(0)"
+                style="color:white;line-height: 2em;"
+              >Privacy Policy. 隐私政策</a>
+            </p>
+          </span>
+        </div>
+      </section>
+    </section>
+    <!-- 底部 -->
+    <footer>
+      <nav class="lastlist">
+        <li class="active">
+          <i class="iconfont icon-home"></i>
+          <span>首页</span>
+        </li>
+        <li>
+          <i class="iconfont icon-fenlei"></i>
+          <span>分类</span>
+        </li>
+        <li>
+          <i class="iconfont icon-gouwuche"></i>
+          <span>购物车</span>
+        </li>
+        <li>
+          <i class="iconfont icon-weibiaoti2fuzhi12"></i>
+          <span>我的</span>
+        </li>
+      </nav>
+    </footer>
   </section>
 </template>
    
@@ -273,12 +433,17 @@ export default {
       }
     });
     //广告轮播
-    let mySwiper3 = new Swiper(".swiper-container2", {
+    let mySwiper2 = new Swiper(".swiper-container2", {
       direction: "vertical",
       // slidesPerView: 3,
       loop: true,
       centeredSlides: true,
       autoplay: true
+    });
+
+    // 排行榜
+    let mySwiper3 = new Swiper(".swiper-container3", {
+      slidesOffsetAfter: 100
     });
   }
 };
