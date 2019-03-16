@@ -13,7 +13,7 @@
           <a href="javascript:void(0)" class="logo">
             <img src="../assets/images/sasa_icon.png" title="莎莎网" alt="莎莎网">
           </a>
-          <a href="javascript:void(0)" class="search_action fr">
+          <a href="javascript:void(0)" class="search_action fr" style="text-decoration: none;">
             <i class="iconfont icon-sousuo"></i>
           </a>
         </section>
@@ -172,10 +172,15 @@
     </section>
 
     <!-- 限时特卖 -->
+    <!--  v-for="goodslists in goodslist" :key="goodslists.goods_id" -->
     <section class="limit_lg_head">
       <img src="../assets/images/limitted_offer.png">
-      <section class="limit_lg_selected_item">
-        <img class="limit_lg_selected_bkg" src="../assets/images/onsale.jpg">
+      <section
+        class="limit_lg_selected_item"
+        v-for="goodslists in goodslist"
+        :key="goodslists.goods_id"
+      >
+        <img class="limit_lg_selected_bkg" :src="goodslists.product_image">
         <div class="limit_lg_selected_new_icon"></div>
 
         <div class="limit_lg_selected_right">
@@ -186,18 +191,18 @@
             <span class="minute">46</span>
           </div>
           <div class="limit_lg_selected_intro">
-            <b class="yew">国内保税仓 零扣关 包税</b>
-            <p>伊丽莎白 · 雅顿&nbsp;升级版金装时空修护胶囊 金胶&nbsp;60粒</p>
+            <b class="yew">{{goodslists.list_tags}}</b>
+            {{goodslists.brand_name}}&nbsp;{{goodslists.name}}&nbsp;{{goodslists.productSize}}
           </div>
           <div class="limit_lg_selected_price">
             <div class="limit_lg_selected_discount">
-              <span class="limit_lg_selected_discount_num">6.8</span>
-              <span class="limit_lg_selected_discount_sig">折</span>
+              <span class="limit_lg_selected_discount_num">{{goodslists.saveprice}}</span>
+              <!-- <span class="limit_lg_selected_discount_sig">折</span> -->
             </div>
             <p>
-              <span class="limit_lg_selected_price_cur">￥388</span>
+              <span class="limit_lg_selected_price_cur">￥{{parseInt(goodslists.price).toFixed(0)}}</span>
               <span class="limit_lg_selected_price_old">
-                <del>￥570</del>
+                <del>￥{{parseFloat(goodslists.mktprice).toFixed(0)}}</del>
               </span>
             </p>
           </div>
@@ -220,8 +225,14 @@
       <section class="ranking_productlist">
         <section class="swiper-container3">
           <section class="swiper-wrapper">
-            <section class="swiper-slide">
-              <a href="javascript:void(0)" class="ranking_product">
+            <section class="swiper-slide" style="width:1000px">
+              <a
+                href="javascript:void(0)"
+                class="ranking_product"
+                style="text-decoration: none;"
+                v-for="hufulists in hufulist"
+                :key="hufulists.goods_id"
+              >
                 <div class="ranking_product_img_wrapper">
                   <img src="../assets/images/onsale.png">
                 </div>
@@ -246,7 +257,7 @@
         <section class="swiper-container3">
           <section class="swiper-wrapper">
             <section class="swiper-slide">
-              <a href="javascript:void(0)" class="ranking_product">
+              <a href="javascript:void(0)" class="ranking_product" style="text-decoration: none;">
                 <div class="ranking_product_img_wrapper">
                   <img src="../assets/images/onsale.png">
                 </div>
@@ -258,7 +269,7 @@
                   </span>
                 </p>
               </a>
-              <a href="javascript:void(0)" class="ranking_product">
+              <a href="javascript:void(0)" class="ranking_product" style="text-decoration: none;">
                 <div class="ranking_product_img_wrapper">
                   <img src="../assets/images/onsale.png">
                 </div>
@@ -283,7 +294,7 @@
         <section class="swiper-container3">
           <section class="swiper-wrapper">
             <section class="swiper-slide">
-              <a href="javascript:void(0)" class="ranking_product">
+              <a href="javascript:void(0)" class="ranking_product" style="text-decoration: none;">
                 <div class="ranking_product_img_wrapper">
                   <img src="../assets/images/onsale.png">
                 </div>
@@ -307,7 +318,7 @@
             <p style="line-height: 1em;">
               <a
                 href="javascript:void(0)"
-                style="color:white;line-height: 2em;"
+                style="color:white;line-height: 2em; text-decoration: none"
               >Privacy Policy. 隐私政策</a>
             </p>
           </span>
@@ -343,9 +354,12 @@
 import "../js/rem.js";
 import Swiper from "swiper";
 import "swiper/dist/css/swiper.min.css";
+
 export default {
   data() {
     return {
+      goodslist: [],
+      hufulist: [],
       //轮播图
       banner: [
         {
@@ -423,6 +437,16 @@ export default {
       ]
     };
   },
+  created() {
+    this.$axios.get("http://localhost:4399/api/home", {}).then(res => {
+      // console.log(res);
+      let data = res.data;
+      // console.log(data);
+      this.goodslist = data.slice(140, 148);
+      console.log(this.goodslist);
+      this.hufulist = data.slice(30, 35);
+    });
+  },
   mounted() {
     // 轮播图
     let mySwiper = new Swiper(".swiper-container", {
@@ -443,7 +467,9 @@ export default {
 
     // 排行榜
     let mySwiper3 = new Swiper(".swiper-container3", {
-      slidesOffsetAfter: 100
+      // slidesPerView: 5,
+      slidesOffsetAfter: 200,
+      centerInsufficientSlides: true
     });
   }
 };

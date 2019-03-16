@@ -2,6 +2,7 @@
   @ editor:wusiyu
     time:2019.3.15
 */
+
 html{
     font-size: 26.67vw;
 }
@@ -394,7 +395,11 @@ header{
     overflow: hidden;
     position: relative;
     background-color: #fff;
+    border-bottom: .1rem solid #eee;
 }   
+.limit_lg_selected_item img{
+    width: 50%;
+}
 
 .limit_lg_selected_bkg {
     width: 100%;
@@ -409,7 +414,7 @@ header{
     height: 3.125rem;
     position: absolute;
     left: 0;
-    top: .20rem;
+    top: 0rem;
     background: url(../images/onsale.png) no-repeat;
     background-size: 3em 3em;
     z-index: 1;
@@ -424,6 +429,7 @@ header{
     z-index: 1;
     margin-right: 5%;
 }
+
 
 .limit_lg_selected_countdown {
     overflow: hidden;
@@ -569,9 +575,10 @@ header{
     margin-right: 10px;
     display: inline-block;
     position: relative;
-
     background: #fff;
+  
 }
+
 
 .ranking_product_img_wrapper {
     width: 80px;
@@ -599,6 +606,7 @@ header{
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
+    text-decoration: none;
 }
 
 .ranking_product_price {
