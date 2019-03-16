@@ -20,7 +20,7 @@ import rem from "./js/rem.js";
 Vue.use(ElementUI);
 
 // 把axios设置到Vue的原型对象上，方便在任意组件中使用
-// Vue.prototype.$axios = axios;
+ Vue.prototype.$axios = axios;
 export default {};
 </script>
 

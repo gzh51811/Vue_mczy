@@ -104,7 +104,7 @@ export default {
   created() {
     let { id: id } = this.$route.query;
     this.$axios
-      .get("http://localhost:4399/api/cart", {
+      .get("http://localhost:1888/api/cart", {
         params: {
           id
         }

@@ -42,7 +42,7 @@
       </ul>
     </div>
     <!-- 底部 -->
-  <footer>
+  <footer id="account_footer">
       <p>Copyright © 2000-2019 Sa Sa dot Com Limited.</p>
       <p style="line-height: 1em;"> All Rights Reserved. 版权所有 </p>
       <p style="line-height: 1em;"> <a href="javascript:void(0)" style="color:white;line-height: 2em;">Privacy Policy. 隐私政策</a></p>
@@ -220,7 +220,7 @@ export default {
 #account {
     background: #f2f2f2;
 }
-footer {
+#account_footer {
     height: 1.44rem;
     background: #404042;
     color: #fff;

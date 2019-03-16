@@ -5,7 +5,7 @@ const app=express();
 const Router=require('./api/routers');
 
 
-let allowOrigin = ['http://localhost:1888', 'http://localhost:10086', 'http://www.taobao.com']
+let allowOrigin = ['http://localhost:1888', 'http://localhost:10086', 'http://www.taobao.com', 'http://localhost:4399']
 
 //  设置跨域资源共享CORS
 app.use((req, res, next) => {
