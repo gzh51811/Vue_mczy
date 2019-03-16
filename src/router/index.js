@@ -1,14 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-<<<<<<< HEAD
 import Cart from './../pages/cart.vue';
 import NotFound from './../pages/NotFound.vue';
 import Account from './../pages/Account.vue';
 import Login from './../pages/Login.vue';
-=======
-import Cart from 'page/Cart';
+
 import Goods from 'page/goods'
->>>>>>> 0f88ddeb69f6f5c0a130dc44dc8485c94c9a8231
 
 Vue.use(VueRouter);
 
@@ -21,14 +18,13 @@ let router = new VueRouter({
             redirect: '/home'
         },
         {
-            name: 'Cart',
+            name: 'cart',
             path: '/cart',
             component: Cart,
             // meta: {
             //     requiresAuth: true
             // }
         },
-<<<<<<< HEAD
         {
             name: 'account',
             path: '/account',
@@ -37,28 +33,26 @@ let router = new VueRouter({
             //     requiresAuth: true
             // }
         },
-         {
+        {
             name: 'login',
             path: '/login',
             component: Login,
-           
+
         },
         // 404
-=======
->>>>>>> 0f88ddeb69f6f5c0a130dc44dc8485c94c9a8231
         {
-            name: 'Goods',
+            name: 'goods',
             path: '/goods',
             component: Goods,
             // meta: {
             //     requiresAuth: true
             // }
-        }
+        },
         // 404
-        // {
-        //     path: '*',
-        //     component: NotFound
-        // }
+        {
+            path: '*',
+            component: NotFound
+        }
     ]
 });
 
