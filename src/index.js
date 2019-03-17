@@ -11,6 +11,6 @@ new Vue({
   router,
   // store,
   mounted() {
-    console.log('root:', this);
+    
   }
 }).$mount('#app')
