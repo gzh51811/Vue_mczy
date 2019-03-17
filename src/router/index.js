@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Cart from 'page/Cart'
+// import Cart from 'page/Cart'
+import List from '../pages/List.vue';
+import goodslist from '../pages/goodslist.vue';
 
 Vue.use(VueRouter);
 
@@ -10,21 +12,32 @@ let router = new VueRouter({
         // 首页:当浏览器地址为path路径是时，自动渲染component对应组件
         {
             path: '/',   //重定向：当浏览器url地址为/,自动跳转到/home
-            redirect: '/cart'
+            redirect: '/list'
         },
         {
-            name: 'Cart',
-            path: '/cart',
-            component: Cart,
-            // meta: {
-            //     requiresAuth: true
-            // }
+            name: 'List',
+            path: '/list',
+            component: List,
         },
+        {
+            name: 'goodslist',
+            path: '/goodslist',
+            component: goodslist,
+        },
+        // {
+        //     name: 'Cart',
+        //     path: '/cart',
+        //     component: Cart,
+        //     // meta: {
+        //     //     requiresAuth: true
+        //     // }
+        // },
+        
         // 404
-        {
-            path: '*',
-            component: NotFound
-        }
+        // {
+        //     path: '*',
+        //     component: NotFound
+        // }
     ]
 });
 
