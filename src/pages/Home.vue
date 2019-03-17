@@ -4,9 +4,9 @@
   <section class="box">
     <!-- 头部 -->
     <header>
-      <section class="download">
+      <!-- <section class="download">
         <img src="../assets/images/downloadapp.jpg">
-      </section>
+      </section>-->
       <!-- logo -->
       <section class="sasa_head">
         <section class="home-nav">
@@ -215,7 +215,7 @@
       </section>
 
       <div class="limit_lg_more">
-        <a href="javascript:void(0)">查看更多特卖</a>
+        <a href="javascript:void(0)" class="more">查看更多特卖</a>
       </div>
     </section>
 
@@ -351,9 +351,13 @@
    
 
 <script>
+import Vue from "vue";
 import "../js/rem.js";
 import Swiper from "swiper";
 import "swiper/dist/css/swiper.min.css";
+
+import { Loadmore } from "mint-ui";
+Vue.component(Loadmore.name, Loadmore);
 
 export default {
   data() {
