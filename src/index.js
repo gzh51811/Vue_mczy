@@ -8,6 +8,7 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
+  // 注入vue根实例
   router,
   // store,
   mounted() {

@@ -57,29 +57,33 @@
 </template>
 <script>
 import { formatDate } from "../js/date.js";
-import Vue from 'vue';
+import Vue from "vue";
 //时间
-function Time(time){
+function Time(time) {
   // console.log(5555)
-  
-     var t=(time*1-new Date().getTime()+60*60*24*17900*60*60-46480*24*60*60*1000);
-       t-=1000;
-        console.log(t)
-      
-        // let day,hr,min,sec = 0;
+
+  var t =
+    time * 1 -
+    new Date().getTime() +
+    60 * 60 * 24 * 17900 * 60 * 60 -
+    46480 * 24 * 60 * 60 * 1000;
+  t -= 1000;
+  // console.log(t);
+
+  // let day,hr,min,sec = 0;
   // 计算时分秒数
-  let day = parseInt(t / 1000 / 60 / 60 / 24)
-  let hr = parseInt(t / 1000 / 60 / 60 % 24)
-  let min = parseInt(t / 1000 / 60 % 60)
-  let sec = parseInt(t / 1000 % 60)
+  let day = parseInt(t / 1000 / 60 / 60 / 24);
+  let hr = parseInt((t / 1000 / 60 / 60) % 24);
+  let min = parseInt((t / 1000 / 60) % 60);
+  let sec = parseInt((t / 1000) % 60);
   // 个位数前补零
-  day = day
-      hr = hr > 9 ? hr : '0' + hr
-      min = min > 9 ? min : '0' + min
-     sec = sec > 9 ? sec : '0' + sec
+  day = day;
+  hr = hr > 9 ? hr : "0" + hr;
+  min = min > 9 ? min : "0" + min;
+  sec = sec > 9 ? sec : "0" + sec;
   // 控制台打印
- 
-  var date=`${day}天 ${hr}小时 ${min}分钟 ${sec}秒`;
+
+  var date = `${day}天 ${hr}小时 ${min}分钟 ${sec}秒`;
   // console.log(date)
   return date;
 }
@@ -93,7 +97,7 @@ export default {
       length: 10,
       loading: true,
       loading2: true,
-      load: true,
+      load: true
       // timer:''
     };
   },
@@ -111,86 +115,81 @@ export default {
         // console.log(res);不能这样写，先别动
         let arr = res.data;
 
-
-          //倒计时
-        arr.map( (obj,index)=>{
-           this.$forceUpdate();
-            this.$set(
-                // obj,"timer",Time(obj.promotion_end_time-obj.promotion_start_time)
-                obj,"timer",Time(obj.promotion_end_time)
-            );
-        })
-         this.goodslist =arr;
-        // })  
-        console.log(this.goodslist); 
+        //倒计时
+        arr.map((obj, index) => {
+          this.$forceUpdate();
+          this.$set(
+            // obj,"timer",Time(obj.promotion_end_time-obj.promotion_start_time)
+            obj,
+            "timer",
+            Time(obj.promotion_end_time)
+          );
+        });
+        this.goodslist = arr;
+        // })
+        // console.log(this.goodslist);
       });
-      //  this.shijian;
-      
-      },
+    //  this.shijian;
+  },
   mounted() {
     this.$nextTick(function() {
       window.addEventListener("scroll", this.onScroll);
       //  window.addEventListener("goodslist.timer", this.countdown);
     });
 
-
-    setInterval( ()=> {
-      
-    for(var i in this.goodslist){
-      //  var t=this.goodslist[i].promotion_end_time-this.goodslist[i].promotion_start_time;
-      var t=(this.goodslist[i].promotion_end_time*1-new Date().getTime()+60*60*24*17900*60*60-46480*24*60*60*1000);
-console.log(t)
+    setInterval(() => {
+      for (var i in this.goodslist) {
+        //  var t=this.goodslist[i].promotion_end_time-this.goodslist[i].promotion_start_time;
+        var t =
+          this.goodslist[i].promotion_end_time * 1 -
+          new Date().getTime() +
+          60 * 60 * 24 * 17900 * 60 * 60 -
+          46480 * 24 * 60 * 60 * 1000;
+        // console.log(t);
         // console.log(this.goodslist[i].promotion_end_time,new Date().getTime())
-              t-=1000;
-  // 计算时分秒数
-  let day = parseInt(t / 1000 / 60 / 60 / 24)
-  let hr = parseInt(t / 1000 / 60 / 60 % 24)
-  let min = parseInt(t / 1000 / 60 % 60)
-  let sec = parseInt(t / 1000 % 60)
-  // 个位数前补零
-  
-  day = day
-      hr = hr > 9 ? hr : '0' + hr
-      min = min > 9 ? min : '0' + min
-      sec = sec > 9 ? sec : '0' + sec
-  // // 控制台打印
- 
-  var date=`${day}天 ${hr}小时 ${min}分钟 ${sec}秒`;
-  
-       
+        t -= 1000;
+        // 计算时分秒数
+        let day = parseInt(t / 1000 / 60 / 60 / 24);
+        let hr = parseInt((t / 1000 / 60 / 60) % 24);
+        let min = parseInt((t / 1000 / 60) % 60);
+        let sec = parseInt((t / 1000) % 60);
+        // 个位数前补零
+
+        day = day;
+        hr = hr > 9 ? hr : "0" + hr;
+        min = min > 9 ? min : "0" + min;
+        sec = sec > 9 ? sec : "0" + sec;
+        // // 控制台打印
+
+        var date = `${day}天 ${hr}小时 ${min}分钟 ${sec}秒`;
+
         // this.$set(this.goodslist,"timer",date);
-    this.goodslist[i]["timer"]=date;
-    // return date;
+        this.goodslist[i]["timer"] = date;
+        // return date;
 
-     this.$forceUpdate();
-  
-    }
-  }, 1000)
- 
+        this.$forceUpdate();
+      }
+    }, 1000);
   },
-
-
-
 
   methods: {
     //点击跳到详情页
     det(id) {
-      console.log(id);
+      // console.log(id);
       this.$router.push("/goods" + "?id=" + id);
     },
 
-     //点击跳到首页
+    //点击跳到首页
     home() {
       // console.log(id);
       this.$router.push("/home");
     },
 
-     //点击跳到首页
+    //点击跳到首页
     list() {
       // console.log(id);
       this.$router.push("/list");
     },
-
 
     //价格保留一位小数
     xianshudiao(price) {
@@ -210,7 +209,7 @@ console.log(t)
             }
           })
           .then(res => {
-            console.log(res);
+            // console.log(res);
             let arr = res.data;
             // this.goodslist=[];
             this.goodslist = arr;
@@ -224,7 +223,7 @@ console.log(t)
             }
           })
           .then(res => {
-            console.log(res);
+            // console.log(res);
             let arr = res.data;
             // this.goodslist=[];
             this.goodslist = arr;
@@ -306,28 +305,23 @@ console.log(t)
           // console.log(res)
         }
       }
-    },
+    }
 
+    //      countdown (time,len) {
+    //   // // 目标日期时间戳
+    //   // const end = Date.parse(new Date('2017-12-01'))
+    //   // // 当前时间戳
+    //   // const now = Date.parse(new Date())
+    //   // 相差的毫秒数
 
+    //   // this.timer = date;
+    //   //能打印时间，就是不能返到页面上//哪里减
+    //   // 一秒后递归
 
+    //   let msec = time;
+    //   let that = this;
 
-
-//      countdown (time,len) {
-//   // // 目标日期时间戳
-//   // const end = Date.parse(new Date('2017-12-01'))
-//   // // 当前时间戳
-//   // const now = Date.parse(new Date())
-//   // 相差的毫秒数
-  
-//   // this.timer = date;
-//   //能打印时间，就是不能返到页面上//哪里减
-//   // 一秒后递归
-  
-//   let msec = time;
-//   let that = this;
-  
-// }
-
+    // }
   }
 };
 </script>

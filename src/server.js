@@ -1,8 +1,8 @@
-const express=require('express');
+const express = require('express');
 
-const app=express();
+const app = express();
 
-const Router=require('./api/routers');
+const Router = require('./api/routers');
 
 let allowOrigin = ['http://localhost:1888','http://localhost:8080', 'http://localhost:10086', 'http://www.taobao.com', 'http://localhost:4399']
 
@@ -24,14 +24,12 @@ app.use((req, res, next) => {
     }
 })
 
+// 静态服务器
+app.use(express.static('./'));
 
-//静态服务器
-    app.use(express.static('./../src'));
+// 路由接口
+app.use('/api', Router);
 
-    //路由接口
-    app.use('/api',Router);
-
-//监听端口
-    app.listen(4399,()=>{
-        console.log('服务器启动成功:4399');
-    });
+app.listen(4399, () => {
+    console.log('server is running on http://localhost:4399');
+});
