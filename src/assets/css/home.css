@@ -14,6 +14,7 @@ html{
     /* background: #eeeeee; */
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 /* 头部 */
@@ -23,6 +24,7 @@ header{
     /* display: flex;
     flex-direction: column; */
 }
+
 
 .download{
     width: 100%;
@@ -433,15 +435,16 @@ header{
 
 .limit_lg_selected_countdown {
     overflow: hidden;
-    padding: 0 .625rem;
+    padding: 0 .1rem;
+    /* 0.625 */
     height: 5%;
     /* line-height: 180%; */
     background-color: #000;
     color: #fff;
-    /* font-size: 0.6em; */
+    font-size: 0.9em;
     text-align: center;
     border-radius: .75rem;
-    margin-top: 20%;
+    margin-top: 8%;
     display: inline-block;
 }
 
@@ -564,7 +567,7 @@ header{
 
 .ranking_productlist {
     width: 90%;
-    padding: 0 5%;
+    padding: 0 3%;
     padding-bottom: 5%;
     overflow: hidden;
 }
@@ -586,6 +589,11 @@ header{
     margin-left: 6px;
     overflow: hidden;
     background: #fff;
+}
+
+.ranking_product_img_wrapper img{
+    width: 80px;
+    height: 80px;
 }
 .ranking_product_img {
     width: 100%;

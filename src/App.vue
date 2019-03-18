@@ -20,6 +20,7 @@ import "./assets/css/base.css";
 import iView from "iview";
 // import "iview/dist/styles/iview.css";
 import Mint from "mint-ui";
+import "mint-ui/lib/style.css";
 // ElementUI以插件的形式来扩展Vue的功能
 Vue.use(ElementUI);
 Vue.use(iView);

@@ -186,9 +186,13 @@
         <div class="limit_lg_selected_right">
           <div class="limit_lg_selected_countdown" style="line-height:.6rem">
             剩余
-            <span class="hour">18</span>:
-            <span class="hour">18</span>:
-            <span class="minute">46</span>
+            <!-- goodslists.promotion_end_time -->
+            <!-- {{Daojishi}} -->
+            <span
+              v-if="Date.parse(new Date(deadline)) <= Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(new Date(start))"
+            >待开始</span>
+            <span v-else-if="Date.parse(new Date())===Date.parse(new Date(start))">已开始</span>
+            <span v-else>{{`${day}天${hr}小时${min}分钟${sec}秒`}}</span>
           </div>
           <div class="limit_lg_selected_intro">
             <b class="yew">{{goodslists.list_tags}}</b>
@@ -225,7 +229,7 @@
       <section class="ranking_productlist">
         <section class="swiper-container3">
           <section class="swiper-wrapper">
-            <section class="swiper-slide" style="width:1000px">
+            <section class="swiper-slide">
               <a
                 href="javascript:void(0)"
                 class="ranking_product"
@@ -234,13 +238,15 @@
                 :key="hufulists.goods_id"
               >
                 <div class="ranking_product_img_wrapper">
-                  <img src="../assets/images/onsale.png">
+                  <img :src="hufulists.product_image">
                 </div>
-                <div class="ranking_product_intro">海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜&nbsp;</div>
+                <div
+                  class="ranking_product_intro"
+                >{{hufulists.brand_name}}&nbsp;{{hufulists.name}}&nbsp;{{hufulists.productSize}}&nbsp;</div>
                 <p class="ranking_product_price">
-                  <span class="ranking_product_price_cur">￥42</span>
+                  <span class="ranking_product_price_cur">￥{{parseInt(hufulists.price).toFixed(0)}}</span>
                   <span class="ranking_product_price_old">
-                    <del>￥99</del>
+                    <del>￥{{parseInt(hufulists.mktprice).toFixed(0)}}</del>
                   </span>
                 </p>
               </a>
@@ -257,27 +263,23 @@
         <section class="swiper-container3">
           <section class="swiper-wrapper">
             <section class="swiper-slide">
-              <a href="javascript:void(0)" class="ranking_product" style="text-decoration: none;">
+              <a
+                href="javascript:void(0)"
+                class="ranking_product"
+                style="text-decoration: none;"
+                v-for="personals in personal"
+                :key="personals.goods_id"
+              >
                 <div class="ranking_product_img_wrapper">
-                  <img src="../assets/images/onsale.png">
+                  <img :src="personals.product_image">
                 </div>
-                <div class="ranking_product_intro">海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜&nbsp;</div>
+                <div
+                  class="ranking_product_intro"
+                >{{personals.brand_name}}&nbsp;{{personals.name}}&nbsp;{{personals.productSize}}&nbsp;</div>
                 <p class="ranking_product_price">
-                  <span class="ranking_product_price_cur">￥42</span>
+                  <span class="ranking_product_price_cur">￥{{parseInt(personals.price).toFixed(0)}}</span>
                   <span class="ranking_product_price_old">
-                    <del>￥99</del>
-                  </span>
-                </p>
-              </a>
-              <a href="javascript:void(0)" class="ranking_product" style="text-decoration: none;">
-                <div class="ranking_product_img_wrapper">
-                  <img src="../assets/images/onsale.png">
-                </div>
-                <div class="ranking_product_intro">海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜&nbsp;</div>
-                <p class="ranking_product_price">
-                  <span class="ranking_product_price_cur">￥42</span>
-                  <span class="ranking_product_price_old">
-                    <del>￥99</del>
+                    <del>￥{{parseInt(personals.mktprice).toFixed(0)}}</del>
                   </span>
                 </p>
               </a>
@@ -294,15 +296,23 @@
         <section class="swiper-container3">
           <section class="swiper-wrapper">
             <section class="swiper-slide">
-              <a href="javascript:void(0)" class="ranking_product" style="text-decoration: none;">
+              <a
+                href="javascript:void(0)"
+                class="ranking_product"
+                style="text-decoration: none;"
+                v-for="caizhuangs in caizhuang"
+                :key="caizhuangs.goods_id"
+              >
                 <div class="ranking_product_img_wrapper">
-                  <img src="../assets/images/onsale.png">
+                  <img :src="caizhuangs.product_image">
                 </div>
-                <div class="ranking_product_intro">海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜海藻补水滋养面膜&nbsp;</div>
+                <div
+                  class="ranking_product_intro"
+                >{{caizhuangs.brand_name}}&nbsp;{{caizhuangs.name}}&nbsp;{{caizhuangs.productSize}}&nbsp;</div>
                 <p class="ranking_product_price">
-                  <span class="ranking_product_price_cur">￥42</span>
+                  <span class="ranking_product_price_cur">￥{{parseInt(caizhuangs.price).toFixed(0)}}</span>
                   <span class="ranking_product_price_old">
-                    <del>￥99</del>
+                    <del>￥{{parseInt(caizhuangs.mktprice).toFixed(0)}}</del>
                   </span>
                 </p>
               </a>
@@ -351,19 +361,24 @@
    
 
 <script>
-import Vue from "vue";
 import "../js/rem.js";
 import Swiper from "swiper";
 import "swiper/dist/css/swiper.min.css";
 
-import { Loadmore } from "mint-ui";
-Vue.component(Loadmore.name, Loadmore);
+// import { Loadmore } from "mint-ui";
+// Vue.component(Loadmore.name, Loadmore);
 
 export default {
   data() {
     return {
+      day: 0,
+      hr: 0,
+      min: 0,
+      sec: 0,
       goodslist: [],
       hufulist: [],
+      personal: [],
+      caizhuang: [],
       //轮播图
       banner: [
         {
@@ -441,14 +456,17 @@ export default {
       ]
     };
   },
+  props: ["deadline", "start"],
   created() {
     this.$axios.get("http://localhost:4399/api/home", {}).then(res => {
       // console.log(res);
       let data = res.data;
       // console.log(data);
       this.goodslist = data.slice(140, 148);
-      console.log(this.goodslist);
-      this.hufulist = data.slice(30, 35);
+      // console.log(this.goodslist);
+      this.hufulist = data.slice(40, 50);
+      this.personal = data.slice(50, 60);
+      this.caizhuang = data.slice(60, 70);
     });
   },
   mounted() {
@@ -472,9 +490,34 @@ export default {
     // 排行榜
     let mySwiper3 = new Swiper(".swiper-container3", {
       // slidesPerView: 5,
-      slidesOffsetAfter: 200,
-      centerInsufficientSlides: true
+      slidesOffsetAfter: 400,
+      // loop: true,
+      // loop: true,
+      // loopAdditionalSlides: 3,
+      centerInsufficientSlides: true,
+      width: 5000
     });
+    this.countdown();
+  },
+  methods: {
+    //倒计时 ，因为数据库的时间戳 全部倒计时时间已过，所有设置了一个时间
+    countdown: function() {
+      const end = Date.parse(new Date("2019-04-20"));
+      const now = Date.parse(new Date());
+      const msec = end - now;
+      let day = parseInt(msec / 1000 / 60 / 60 / 24);
+      let hr = parseInt((msec / 1000 / 60 / 60) % 24);
+      let min = parseInt((msec / 1000 / 60) % 60);
+      let sec = parseInt((msec / 1000) % 60);
+      this.day = day;
+      this.hr = hr > 9 ? hr : "0" + hr;
+      this.min = min > 9 ? min : "0" + min;
+      this.sec = sec > 9 ? sec : "0" + sec;
+      const that = this;
+      setTimeout(function() {
+        that.countdown();
+      }, 1000);
+    }
   }
 };
 </script>
