@@ -21,7 +21,7 @@ let router = new VueRouter({
             redirect: '/home'
         },
         {
-            name: 'List',
+            name: 'list',
             path: '/list',
             component: List,
         },
