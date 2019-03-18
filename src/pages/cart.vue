@@ -3,11 +3,11 @@
     <header>
       <ul>
         <li>
-          <i class="iconfont icon-left"></i>
+          <i class="iconfont icon-left" @click="tui()"></i>
         </li>
         <li>购物车</li>
         <li>
-          <i class="iconfont icon-home"></i>
+          <i class="iconfont icon-home" @click="zhuye()"></i>
         </li>
       </ul>
     </header>
@@ -20,32 +20,48 @@
             <dd>2. 保税仓直送商品每张订单总金额不可超过 ¥5000。</dd>
           </dl>
         </div>
+
         <ul>
-          <li v-for="goods in goodslist" :key="goods.goods_id">
-            <input type="checkbox" class="xzk">
+          <div class="ui-cart-table-title">
+            <label>
+              <input type="checkbox" v-model="checkAll" class="allxz">国内保税仓
+            </label>
+          </div>
+          <li v-for="(goods,idx) in goodslist" :key="goods.goods_id">
+            <label>
+              <input
+                type="checkbox"
+                v-model="selected"
+                class="xzk"
+                :value="idx"
+                @click.stop="select(idx)"
+              >
+            </label>
             <div class="ui-cart-product-price">
-              <strong class="ui-color-pink J-subtotal">￥{{parseFloat(goods.price).toFixed(2)}}</strong>
+              <strong
+                class="ui-color-pink J-subtotal"
+              >￥{{parseFloat(goods.price*goods.qty).toFixed(2)}}</strong>
             </div>
             <div class="ui-cart-product-imgcont">
               <div class="ui-cart-product-img">
-                <a href="###" target="_blank">
+                <a href="javascript:;" target="_blank">
                   <img :src="goods.product_image" alt>
                 </a>
               </div>
             </div>
             <div class="ui-cart-product-action">
-              <a href="###" class="J-cart-remove">
+              <a href="javascript:;" class="J-cart-remove" @click="deletegoods(goods.goods_id,idx)">
                 <i class="iconfont icon-empty"></i>
               </a>
             </div>
             <div class="ui-cart-product-info">
               <div class="ui-cart-product-name">
-                <a href="###">{{goods.brand_name}} {{goods.goods_name}}</a>
+                <a href="javascript:;">{{goods.brand_name}} {{goods.goods_name}}</a>
               </div>
               <div class="ui-cart-product-qty J-qty-cont">
                 <el-input-number
                   v-model="goods.qty"
-                  @change="handleChange"
+                  @change="handleChange(goods.qty,goods.goods_id)"
                   :min="1"
                   :max="99"
                   size="small"
@@ -71,16 +87,16 @@
           <dl class="ui-cart-total-main">
             <dt>
               共
-              <span class="ui-color-pink" id="J_cartTotalProducts">0</span> 件商品
+              <span class="ui-color-pink" id="J_cartTotalProducts">{{qtytotle}}</span> 件商品
             </dt>
             <dd>
               商品应付金额
-              <span class="ui-color-pink" id="J_cartTotalPrices">￥0.0</span>
+              <span class="ui-color-pink" id="J_cartTotalPrices">￥{{qtytotle}}</span>
             </dd>
             <dd></dd>
           </dl>
           <div class="ui-cart-checkout-main">
-            <a href="###" class="ui-cart-checkout-btn" id="J_cartCheckout">结帐</a>
+            <a href="javascript:;" class="ui-cart-checkout-btn" id="J_cartCheckout">结帐</a>
           </div>
         </div>
       </div>
@@ -92,12 +108,83 @@ import "./../assets/font_cn2qla3535/iconfont.css";
 export default {
   data() {
     return {
-      goodslist: []
+      goodslist: [],
+      selected: []
     };
   },
+  computed: {
+    // computed中的属性为getter&setter
+    // 默认为getter
+    // checkAll(){
+    //     // 返回true:所有的索引值都存在seleted中
+    //     // 返回false:只要有一个索引值不在selected中
+    // }
+    qtytotle() {
+      console.log(this.selected);
+      let totleqty = 0;
+      this.selected.forEach(item => {
+        totleqty += this.goodslist[item].qty * this.goodslist[item].price;
+        // console.log(this.goodslist[item]);
+      });
+      return totleqty;
+    },
+    moneytotle() {
+      let totlemoney = 0;
+      this.selected.forEach(item => {
+        totlemoney += this.goodslist[item].qty;
+      });
+      return totlemoney;
+    },
+    checkAll: {
+      get() {
+        // console.log(this.goodslist);
+        return this.goodslist.every((goods, idx) =>
+          this.selected.includes(idx)
+        );
+      },
+      set(checked) {
+        this.selected = checked ? this.goodslist.map((item, idx) => idx) : [];
+      }
+    }
+  },
   methods: {
-    handleChange(value) {
-      console.log(value);
+    deletegoods(id, idx) {
+      this.goodslist.splice(idx, 1);
+      this.$axios
+        .post("http://localhost:4399/api/cart1", {
+          params: {
+            id
+          }
+        })
+        .then(res => {});
+    },
+    select(idx) {
+      // 获取idx在数组中的位置
+      let index = this.selected.indexOf(idx);
+      if (index >= 0) {
+        // 如果当前已勾选，则取消勾选
+        this.selected.splice(index, 1);
+      } else {
+        this.selected.push(idx);
+      }
+    },
+    tui() {
+      this.$router.go(-1);
+    },
+    zhuye() {
+      this.$router.push("/home");
+    },
+    handleChange(value, idx) {
+      // console.log(value);
+      // console.log(idx);
+      this.$axios
+        .post("http://localhost:4399/api/cart", {
+          params: {
+            value,
+            idx
+          }
+        })
+        .then(res => {});
     }
   },
 
@@ -113,8 +200,6 @@ export default {
         // console.log(res);
         let arr = res.data;
         this.goodslist = arr;
-
-        console.log(this.goodslist);
       });
   }
 };
@@ -183,6 +268,35 @@ body {
         flex: 1;
         align-self: center;
       }
+    }
+  }
+  .ui-cart-table-title {
+    padding-left: 0.253333 * 2rem;
+    color: #404041;
+    background-color: #f2f2f2;
+    height: 0.56 * 2rem;
+    line-height: 0.56 * 2rem;
+    position: relative;
+    font-size: 0.226667 * 2rem;
+    input[type="checkbox"] {
+      vertical-align: 1px;
+      margin-right: 0.133333 * 2rem;
+      font-size: 1.6rem;
+    }
+    :after {
+      position: absolute;
+      content: "";
+      left: 0;
+      top: 0;
+      border-left: 0.053333 * 2rem solid #c69a62;
+      height: 100%;
+    }
+    .el-checkbox {
+      color: #606266;
+      font-weight: 500;
+      font-size: 14px;
+      user-select: none;
+      margin-right: 5px;
     }
   }
   main {
@@ -300,6 +414,7 @@ body {
         padding: 0.186667 * 2rem;
         background-color: #fff;
         .ui-cart-total-main {
+          text-align: left;
           float: left;
           line-height: 0.253333 * 2rem;
           font-size: 0.213333 * 2rem;
@@ -311,6 +426,8 @@ body {
           overflow: hidden;
           text-align: right;
           .ui-cart-checkout-btn {
+            position: absolute;
+            right: 0.133333 * 3rem;
             display: inline-block;
             width: 1.68 * 2rem;
             height: 0.56 * 2rem;

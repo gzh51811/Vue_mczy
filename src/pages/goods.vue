@@ -3,11 +3,11 @@
     <header>
       <ul>
         <li>
-          <i class="iconfont icon-left"></i>
+          <i class="iconfont icon-left" @click="tui()"></i>
         </li>
         <li>商品详情</li>
         <li>
-          <i class="iconfont icon-home"></i>
+          <i class="iconfont icon-home" @click="zhuye()"></i>
         </li>
       </ul>
     </header>
@@ -26,12 +26,12 @@
         <!-- 商品标签 end -->
         <span class="new_topbj">
           <!-- 收藏按钮 begin -->
-          <a href="###">
+          <a href="javascript:;">
             <i class="iconfont icon-xihuan-xianxing"></i>
           </a>
           <!-- 收藏按钮 end -->
           <!-- 分享按钮 begin -->
-          <a href="###">
+          <a href="javascript:;">
             <i class="iconfont icon-share_fill"></i>
           </a>
           <!-- 分享按钮 end -->
@@ -163,19 +163,19 @@
       </div>
     </main>
     <footer v-for="goods in goodsinfo" :key="goods.goods_id+1">
-      <div class="show_foot_gwc">
+      <div class="show_foot_gwc" @click="tocart()">
         <div
           id="J_cart_box"
           style="display:block;position:absolute;bottom:20px;left:20px; width:30px;height:30px;"
         ></div>
         <i class="iconfont icon-caigou-xianxing"></i>
-        <i class="show_foot_Already" id="J_product_cartnum">0</i>
+        <el-badge :value="3" class="item"></el-badge>
       </div>
       <span class="show_red">
-        <b class="font_money J_cart_price">¥{{parseFloat(goods.price).toFixed(0)}}</b>
+        <b class="font_money J_cart_price">¥{{parseFloat(goods.price*num1).toFixed(0)}}</b>
       </span>
       <span id="show_addcart">
-        <a href="###" class="show_addgwc" id="J_buy_btn" @click="add2cart">加入购物车</a>
+        <div class="show_addgwc" id="J_buy_btn" @click="add2cart">加入购物车</div>
         <!-- 加入购物车按钮 -->
       </span>
     </footer>
@@ -199,12 +199,40 @@ export default {
   },
   computed: {},
   methods: {
+    tui() {
+      this.$router.go(-1);
+    },
+    zhuye() {
+      this.$router.push("/home");
+    },
+    tocart() {
+      this.$router.push("/cart");
+    },
+    add2cart() {
+      let { id: id } = this.$route.query;
+      this.$axios
+        .post("http://localhost:4399/api/goods", {
+          params: {
+            id,
+            num: this.num1
+          }
+        })
+        .then(res => {
+          // console.log(res);
+          // console.log(this.goodsinfo);
+          this.$alert("加入购物车成功", "", {
+            confirmButtonText: "确定",
+            callback: action => {}
+          });
+        });
+    },
     handleChange(value) {
-      console.log(value);
+      // console.log(value);
     },
     async getData() {
       let { id: id } = this.$route.query;
-      console.log(id);
+
+      // console.log(id);
       this.$axios
         .get("http://localhost:4399/api/goods", {
           params: {
@@ -212,7 +240,7 @@ export default {
           }
         })
         .then(res => {
-          console.log(res);
+          // console.log(res);
           let arr = res.data;
           this.goodsinfo = arr;
 
@@ -220,31 +248,7 @@ export default {
         });
     }
   },
-  add2cart() {
-    let res = this.goodsinfo;
-    let { id: id } = this.$route.query;
 
-    // 获取购物车商品信息
-    let currentGoods = this.$store.state.cartlist.filter(
-      item => item.goods_id === goods_id
-    )[0];
-
-    // 判断当前商品是否添加过到购物车
-    if (currentGoods) {
-      // 已添加：数量+1
-      this.$store.commit("changeQty", { goods_id, qty: currentGoods.qty + 1 });
-    } else {
-      // 未添加过：添加商品
-      this.$store.commit("addCartList", {
-        goods_pic_url,
-        goods_title,
-        oprice,
-        sprice,
-        goods_id,
-        qty: 1
-      });
-    }
-  },
   mounted() {
     this.getData();
   }
@@ -634,15 +638,20 @@ body {
       color: #fff;
       background: #ee3e7e;
       display: inline-block;
-      width: 40%;
+      width: 1.333333 * 3rem;
       float: right;
       margin-right: 0.2 * 2rem;
       position: relative;
       top: 0.2 * 2rem;
+      right: -1 * 2rem;
       border-radius: 0.04 * 2rem;
       max-width: 4 * 2rem;
       z-index: 500000;
     }
+  }
+  .item {
+    margin-top: 20px;
+    margin-right: 30px;
   }
 }
 </style>
