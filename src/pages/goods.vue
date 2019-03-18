@@ -204,19 +204,19 @@ export default {
     },
     async getData() {
       let { id: id } = this.$route.query;
-      console.log(id)
+      console.log(id);
       this.$axios
-        .get("http://localhost:1888/api/goods", {
+        .get("http://localhost:4399/api/goods", {
           params: {
             id
           }
         })
         .then(res => {
-          // console.log(res);
+          console.log(res);
           let arr = res.data;
           this.goodsinfo = arr;
 
-          console.log(this.goodsinfo);
+          // console.log(this.goodsinfo);
         });
     }
   },

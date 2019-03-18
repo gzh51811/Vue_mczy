@@ -1,14 +1,14 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 // import Cart from 'page/Cart'
-import List from '../pages/List.vue';
-import goodslist from '../pages/goodslist.vue';
+import List from '../pages/list.vue';
+import Goodslist from '../pages/goodslist.vue';
 import Cart from './../pages/cart.vue';
 import NotFound from './../pages/NotFound.vue';
 import Account from './../pages/Account.vue';
 import Login from './../pages/Login.vue';
 
-import Goods from 'page/goods'
+import Goods from './../pages/goods.vue'
 
 Vue.use(VueRouter);
 
@@ -60,7 +60,7 @@ let router = new VueRouter({
         {
             name: 'goodslist',
             path: '/goodslist',
-            component: goodslist,
+            component: Goodslist,
         },
         // {
         //     name: 'Cart',

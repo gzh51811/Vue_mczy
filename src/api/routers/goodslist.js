@@ -24,7 +24,7 @@ Router.get('/', urlencodedParser, jsonParser,async (req, res) => {
            
             // 使用某个集合
             // let num=10;
-            let collecton = db.collection('list');
+            let collecton = db.collection('goods');
             let data=await collecton.find().limit(10).toArray();
         // let data= await db.find('list');
              client.close();
@@ -44,13 +44,13 @@ Router.get('/', urlencodedParser, jsonParser,async (req, res) => {
             // 使用某个集合
             let {length,page}=req.query;
             console.log(length,page)
-            let collecton = db.collection('list');
+            let collecton = db.collection('goods');
             let data=await collecton.find().skip(page*length).limit(10).toArray();
         // let data= await db.find('list');
-             client.close();
+            //  client.close();
 
         //查全部返回长度
-        // console.log(data)
+        console.log(data)
         res.send(data)
     })
     }
@@ -63,7 +63,7 @@ Router.get('/', urlencodedParser, jsonParser,async (req, res) => {
     
     
             // 使用某个集合
-            let collecton = db.collection('list');
+            let collecton = db.collection('goods');
             let data=await collecton.find().sort({price:1}).toArray();
             res.send(data);
     })
@@ -78,7 +78,7 @@ Router.get('/', urlencodedParser, jsonParser,async (req, res) => {
     
     
             // 使用某个集合
-            let collecton = db.collection('list');
+            let collecton = db.collection('goods');
             let data=await collecton.find().sort({price:-1}).toArray();
             res.send(data);
     })
