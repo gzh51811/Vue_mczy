@@ -108,36 +108,31 @@ export default {
       //console.log(res);
 
       if (res) {
-          //发送请求
-        var data = await axios.post("http://localhost:1888/api/login", {
+        //发送请求
+        var data = await axios.post("http://localhost:4399/api/login", {
           m: "login",
           username: this.username,
           password: this.password
         });
 
-       
-        
-        data = data.data
+        data = data.data;
         this.msg = data.msg;
-       
       } else {
-        
       }
       let loginRes = MessageBox({
-            title: "提示",
-            message: this.msg,
-            showCancelButton: true
-        });
+        title: "提示",
+        message: this.msg,
+        showCancelButton: true
+      });
 
-       
-        //登录成功
-        if(this.msg == '登录成功') {
-            console.log(data)
-            //,}
-            localStorage.setItem('username', data._username);
-            localStorage.setItem('token', data._token);
-            //跳转主页
-        }
+      //登录成功
+      if (this.msg == "登录成功") {
+        console.log(data);
+        //,}
+        localStorage.setItem("username", data._username);
+        localStorage.setItem("token", data._token);
+        //跳转主页
+      }
     }
   },
   mounted() {
