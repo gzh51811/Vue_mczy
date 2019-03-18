@@ -211,7 +211,10 @@
             </p>
           </div>
           <div class="limit_lg_selected_opt">
-            <div class="limit_lg_selected_btn limit_lg_selected_btn_enable">
+            <div
+              class="limit_lg_selected_btn limit_lg_selected_btn_enable"
+              @click="goto(goodslists.goods_id)"
+            >
               <span>立即抢购</span>
             </div>
           </div>
@@ -587,6 +590,13 @@ export default {
             this.nomore = false;
           }
         });
+    },
+    goto(id) {
+      console.log(id);
+      // params传参，不支持path跳转
+      this.$router.push({ name: "goods", query: { id }, params: { id } });
+      //   this.$router.push({path:'/goods/'+id})
+      //   this.$router.push({'/goods/'+id)
     }
   }
 };
