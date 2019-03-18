@@ -33,8 +33,7 @@ Vue.prototype.$axios = axios;
 
 export default {};
 </script>
-
-  
+ 
 <style>
 @import "../src/assets/css/home.css";
 .container {

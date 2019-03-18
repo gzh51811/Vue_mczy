@@ -93,7 +93,7 @@
     </header>
     <!-- main1 -->
     <!-- <section class="main1"> -->
-    <section class="promo2m">
+    <section class="promo2m" @click="gotogoodlist()">
       <a href="javascript:void(0)">
         <section
           class="promo2mA"
@@ -151,13 +151,13 @@
       <img src="../assets/images/must_check.png">
     </section>
 
-    <section class="mustcheck">
+    <section class="mustcheck" @click="gotogoodlist">
       <section style="opacity: 1; display: block;">
         <section
           class="mustcheck_item"
           style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);"
           v-for="(mustchecks) in  mustcheck"
-          :key="mustchecks.title"
+          :key="mustchecks.goods_id"
         >
           <a href="javascript:void(0)" target="_blank">
             <img class="mustcheck_lg_img" :src="mustchecks.imgurl">
@@ -352,19 +352,19 @@
     <!-- 底部 -->
     <footer>
       <nav class="lastlist">
-        <li class="active">
+        <li class="active" @click="gotohome">
           <i class="iconfont icon-home"></i>
           <span>首页</span>
         </li>
-        <li>
+        <li @click="gotogoodlist">
           <i class="iconfont icon-fenlei"></i>
           <span>分类</span>
         </li>
-        <li>
+        <li @click="gotocart">
           <i class="iconfont icon-gouwuche"></i>
           <span>购物车</span>
         </li>
-        <li>
+        <li @click="gotomy">
           <i class="iconfont icon-weibiaoti2fuzhi12"></i>
           <span>我的</span>
         </li>
@@ -597,6 +597,21 @@ export default {
       this.$router.push({ name: "goods", query: { id }, params: { id } });
       //   this.$router.push({path:'/goods/'+id})
       //   this.$router.push({'/goods/'+id)
+    },
+    gotogoodlist() {
+      this.$router.push({ name: "goodslist" });
+    },
+    // gotogoods(id) {
+    //   this.$router.push({ name: "goods", query: { id }, params: { id } });
+    // }
+    gotohome() {
+      this.$router.push({ name: "Home" });
+    },
+    gotocart() {
+      this.$router.push({ name: "cart" });
+    },
+    gotomy() {
+      this.$router.push({ name: "account" });
     }
   }
 };

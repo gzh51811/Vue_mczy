@@ -12,9 +12,9 @@ const mongodb = require('mongodb');
 
 Router.get('/', async (req, res) => {
     let { id } = req.query;
-     //console.log(id);
+    //  console.log(id);
     let data = await db.find('goods', { goods_id: id });
-    // console.log(data);
+    console.log(data);
     res.send(data)
 });
 

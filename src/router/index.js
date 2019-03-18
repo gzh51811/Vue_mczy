@@ -2,12 +2,15 @@ import Vue from 'vue';
 
 // 1.引入vue-router
 import VueRouter from 'vue-router';
+// import Cart from 'page/Cart'
+import List from '../pages/list.vue';
+import Goodslist from '../pages/goodslist.vue';
 import Cart from './../pages/cart.vue';
 import NotFound from './../pages/NotFound.vue';
 import Account from './../pages/Account.vue';
 import Login from './../pages/Login.vue';
 
-import Goods from 'page/goods'
+import Goods from './../pages/goods.vue'
 
 import Home from "../pages/Home.vue";
 import Advertisement from "../pages/Advertisement.vue";
@@ -30,6 +33,11 @@ let router = new VueRouter({
             name: 'Home',
             path: '/home',
             component: Home,
+        },
+        {
+            name: 'List',
+            path: '/list',
+            component: List,
         },
         {
             name: 'cart',
@@ -62,12 +70,31 @@ let router = new VueRouter({
             //     requiresAuth: true
             // }
         },
+        {
+            name: 'goodslist',
+            path: '/goodslist',
+            component: Goodslist,
+        },
         // 404
         {
             path: '*',
             component: NotFound
         },
 
+        // {
+        //     name: 'Cart',
+        //     path: '/cart',
+        //     component: Cart,
+        //     // meta: {
+        //     //     requiresAuth: true
+        //     // }
+        // },
+
+        // 404
+        // {
+        //     path: '*',
+        //     component: NotFound
+        // }
     ]
 });
 

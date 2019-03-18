@@ -212,11 +212,11 @@ export default {
           }
         })
         .then(res => {
-          // console.log(res);
+          console.log(res);
           let arr = res.data;
           this.goodsinfo = arr;
 
-          console.log(this.goodsinfo);
+          // console.log(this.goodsinfo);
         });
     }
   },
