@@ -545,9 +545,30 @@ header{
 }
 
 .more{
+    display: block;
     color: #a3a3a3;
     text-decoration: none!important;
 }
+
+.demo-spin-container{
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    position: relative;
+    border: 1px solid #eee;
+}
+.nomore{
+    display: none;
+}
+.dangerbutton{
+    width: 100%;
+    background-color: #ed3d7d!important;
+}
+.dangerbutton a{
+    color: white;
+   
+}
+
 
 .ranking_item {
     width: 100%;
@@ -725,3 +746,4 @@ footer .lastlist li {
   
   }
   
+

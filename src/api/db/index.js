@@ -61,6 +61,7 @@ exports.update = async (colName, query, newData) => {
 exports.find = async (colName, query, page, limit) => {
     let { db, client } = await connect();
     let collection = db.collection(colName);
+    // console.log(page, limit);
     if (page && limit) {
         let res = await collection.find(query).skip((page - 1) * limit).limit(limit).toArray();
         client.close();

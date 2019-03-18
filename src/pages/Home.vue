@@ -219,7 +219,18 @@
       </section>
 
       <div class="limit_lg_more">
-        <a href="javascript:void(0)" class="more">查看更多特卖</a>
+        <!--  :data="moreData"    prop="clickme"-->
+        <el-button
+          v-loading="loading"
+          style="width: 100%"
+          class="more"
+          v-if="ismore"
+          v-on:click="more"
+        >点我加载更多</el-button>
+        <!-- <a href="javascript:void(0)" class="more" v-show="ismore" v-on:click="more">查看更多特卖</a> -->
+        <el-button type="danger" disabled :class="{nomore:nomore}" class="dangerbutton">
+          <a href="javascript:void(0)" style="text-decoration: none;">没有数据了 o !</a>
+        </el-button>
       </div>
     </section>
 
@@ -371,6 +382,11 @@ import "swiper/dist/css/swiper.min.css";
 export default {
   data() {
     return {
+      loading: false,
+      ismore: true,
+      nomore: true,
+      page: 1,
+      limit: 8,
       day: 0,
       hr: 0,
       min: 0,
@@ -458,15 +474,29 @@ export default {
   },
   props: ["deadline", "start"],
   created() {
+    this.$axios
+      .get("http://localhost:4399/api/home", {
+        params: {
+          page: this.page,
+          limit: this.limit
+        }
+      })
+      .then(res => {
+        // console.log(res);
+        let data = res.data;
+        // console.log(data);
+        this.goodslist = data;
+        // console.log(this.goodslist);
+      });
     this.$axios.get("http://localhost:4399/api/home", {}).then(res => {
       // console.log(res);
       let data = res.data;
       // console.log(data);
-      this.goodslist = data.slice(140, 148);
+      // this.goodslist = data;
       // console.log(this.goodslist);
-      this.hufulist = data.slice(40, 50);
-      this.personal = data.slice(50, 60);
-      this.caizhuang = data.slice(60, 70);
+      this.hufulist = data.slice(40, 47);
+      this.personal = data.slice(50, 57);
+      this.caizhuang = data.slice(60, 67);
     });
   },
   mounted() {
@@ -497,6 +527,7 @@ export default {
       centerInsufficientSlides: true,
       width: 5000
     });
+
     this.countdown();
   },
   methods: {
@@ -517,6 +548,45 @@ export default {
       setTimeout(function() {
         that.countdown();
       }, 1000);
+    },
+    more() {
+      // console.log(this.page++);
+      // console.log(this.limit);
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+      }, 1500);
+      this.limit;
+      // this.page++;
+      this.page++;
+      this.$axios
+        .get("http://localhost:4399/api/home", {
+          params: {
+            page: this.page,
+            limit: this.limit
+          }
+        })
+        .then(res => {
+          // console.log(res);
+          let data = res.data;
+          // console.log(data);
+          // this.goodslist = data;
+          // this.goodslist.push(data);
+          // console.log(this.goodslist);
+          if (data.length) {
+            // 研究concat方法
+            // this.goodslis = this.goodslist.concat(data);
+            // console.log(this.goodslist);
+            for (var i = 0; i < data.length; i++) {
+              // console.log(data[i]);
+              this.goodslist.push(data[i]);
+            }
+          } else {
+            // alert("没有数据了");
+            this.ismore = false;
+            this.nomore = false;
+          }
+        });
     }
   }
 };

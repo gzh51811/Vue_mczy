@@ -11,8 +11,12 @@ let urlencodeParser = bodyParser.urlencoded({ extended: false });
 let jsonParser = bodyParser.json();
 
 Router.get("/", urlencodeParser, jsonParser, async (req, res) => {
-    let data = await db.find("goods");
-    console.log(data);
+
+    let { page, limit } = req.query;
+
+    let data = await db.find("goods", {}, page, limit * 1);
+    // let data = await db.find("goods");
+    // console.log(data);
     res.send(data);
 });
 
