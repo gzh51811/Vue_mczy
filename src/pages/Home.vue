@@ -10,7 +10,7 @@
       <!-- logo -->
       <section class="sasa_head">
         <section class="home-nav">
-          <a href="javascript:void(0)" class="logo">
+          <a href="javascript:void(0)" class="logo" @click="gotohome">
             <img src="../assets/images/sasa_icon.png" title="莎莎网" alt="莎莎网">
           </a>
           <a href="javascript:void(0)" class="search_action fr" style="text-decoration: none;">
@@ -97,7 +97,7 @@
       <a href="javascript:void(0)">
         <section
           class="promo2mA"
-          style="background: url(../../../assets/images/promo1.jpg)no-repeat right 1.75em;
+          style="background: url(../../../assets/images/promo1.jpg)no-repeat right .5rem;
     background-size: 2.7rem auto;border-right:.0625rem solid #eee"
         >
           <section class="promo2m_titleA">葆丽美指定产品</section>
@@ -120,7 +120,7 @@
         <section
           class="promo2mC"
           style="
-          background:url(../../../assets/images/promo3.jpg)no-repeat center 54px;background-size:65% auto;border-left:none"
+          background:url(../../../assets/images/promo3.jpg)no-repeat center 90%;background-size:65% auto;border-left:none"
         >
           <section class="promo2m_titleB">新人福利专场</section>
           <section class="promo2m_taglineB">领888元见面礼</section>
@@ -129,7 +129,7 @@
       <a href="javascript:void(0)">
         <section
           class="promo2mC"
-          style="background:url(../../../assets/images/promo4.jpg)no-repeat center 54px;background-size:65% auto;"
+          style="background:url(../../../assets/images/promo4.jpg)no-repeat center 90%;background-size:65% auto;"
         >
           <section class="promo2m_titleB">会员俱乐部</section>
           <section class="promo2m_taglineB">积分抵现计划</section>
@@ -138,7 +138,7 @@
       <a href="javascript:void(0)">
         <section
           class="promo2mC"
-          style="background:url(../../../assets/images/promo5.jpg)no-repeat center 54px;background-size:65% auto;"
+          style="background:url(../../../assets/images/promo5.jpg)no-repeat center 90%;background-size:65% auto;"
         >
           <section class="promo2m_titleB">VIP福利场</section>
           <section class="promo2m_taglineB">3月VIP尊享</section>
@@ -151,7 +151,7 @@
       <img src="../assets/images/must_check.png">
     </section>
 
-    <section class="mustcheck" @click="gotogoodlist">
+    <section class="mustcheck">
       <section style="opacity: 1; display: block;">
         <section
           class="mustcheck_item"
@@ -179,6 +179,7 @@
         class="limit_lg_selected_item"
         v-for="goodslists in goodslist"
         :key="goodslists.goods_id"
+        @click.stop="goto(goodslists.goods_id)"
       >
         <img class="limit_lg_selected_bkg" :src="goodslists.product_image">
         <div class="limit_lg_selected_new_icon"></div>
@@ -211,10 +212,7 @@
             </p>
           </div>
           <div class="limit_lg_selected_opt">
-            <div
-              class="limit_lg_selected_btn limit_lg_selected_btn_enable"
-              @click="goto(goodslists.goods_id)"
-            >
+            <div class="limit_lg_selected_btn limit_lg_selected_btn_enable">
               <span>立即抢购</span>
             </div>
           </div>
@@ -465,13 +463,13 @@ export default {
           titname: "人气时尚彩妆品牌",
           subtitname: "CYBER COLORS",
           title: "控油清爽粉饼98元必抢！"
-        },
-        {
-          imgurl: "../assets/images/mustcheck5.jpg",
-          titname: "美白淡斑神器",
-          subtitname: "OLAY 淡斑小白瓶666元",
-          title: "让你美到发光2"
         }
+        // {
+        //   imgurl: "../assets/images/mustcheck5.jpg",
+        //   titname: "美白淡斑神器",
+        //   subtitname: "OLAY 淡斑小白瓶666元",
+        //   title: "让你美到发光2"
+        // }
       ]
     };
   },
@@ -592,14 +590,14 @@ export default {
         });
     },
     goto(id) {
-      console.log(id);
+      // console.log(id);
       // params传参，不支持path跳转
       this.$router.push({ name: "goods", query: { id }, params: { id } });
       //   this.$router.push({path:'/goods/'+id})
       //   this.$router.push({'/goods/'+id)
     },
     gotogoodlist() {
-      this.$router.push({ name: "goodslist" });
+      this.$router.push({ name: "list" });
     },
     // gotogoods(id) {
     //   this.$router.push({ name: "goods", query: { id }, params: { id } });
