@@ -393,8 +393,9 @@ html {
   margin-left: 0.613333rem;
 }
 .title {
-  font-size: 0.64rem;
+  font-size: .573333rem;
   color: #fff;
+  padding-left: 1.333333rem;
 }
 .header .header-bottom .icon {
   // width:.613333rem;

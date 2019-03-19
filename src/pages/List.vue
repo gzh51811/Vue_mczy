@@ -11,7 +11,7 @@
         </li>
       </ul>
       <ul class="main-bottom">
-        <li @click="goto()" v-for="listss in lists" :key="listss.id">
+        <li @click="gotos()" v-for="listss in lists" :key="listss.id">
           <a href="javascript:void(0)">{{listss.name}}</a>
         </li>
       </ul>
