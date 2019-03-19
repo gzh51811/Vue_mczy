@@ -726,7 +726,7 @@ export default {
 
     //跳转到首页
     gotohome() {
-      this.$router.push({ name: "Home" });
+      this.$router.push({ name: "home" });
     },
 
     //跳转到购物车也

@@ -28,7 +28,7 @@ let router = new VueRouter({
             path: '/',
             component: Advertisement,
         },
-        
+
         {
             name: 'register',
             path: '/register',
@@ -66,7 +66,7 @@ let router = new VueRouter({
             component: Login,
 
         },
-       
+
         {
             name: 'goods',
             path: '/goods',

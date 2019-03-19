@@ -60,11 +60,11 @@ export default {
     };
   },
   methods: {
-     //返回上一层
-     lista(){
+    //返回上一层
+    lista() {
       this.$router.go(-1);
-      },
-       //列表页
+    },
+    //列表页
     gotos() {
       this.$router.push("/goodslist");
     },
@@ -75,7 +75,7 @@ export default {
       //   this.$router.push({path:'/goods/'+id})
       //   this.$router.push({'/goods/'+id)
     },
-       //去到分类，首页，购物车，我的
+    //去到分类，首页，购物车，我的
     gotogoodlist() {
       this.$router.push({ name: "list" });
     },
@@ -83,7 +83,7 @@ export default {
     //   this.$router.push({ name: "goods", query: { id }, params: { id } });
     // }
     gotohome() {
-      this.$router.push({ name: "Home" });
+      this.$router.push({ name: "home" });
     },
     gotocart() {
       this.$router.push({ name: "cart" });
@@ -96,7 +96,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 // @import "../assets/css/home.css";
-@import "../assets/iconfont/iconfont.css";
+// @import "../assets/iconfont/iconfont.css";
 body,
 html {
   width: 100%;

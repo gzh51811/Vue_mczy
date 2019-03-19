@@ -21,7 +21,7 @@ export default {
       this.time--;
       if (this.time == 0) {
         clearInterval(timer);
-        this.$router.push({ name: "Home" });
+        this.$router.push({ name: "home" });
         return timer;
       }
     }, 1000);
@@ -29,7 +29,7 @@ export default {
   methods: {
     skip() {
       // clearInterval(timer);
-      this.$router.push({ name: "Home" });
+      this.$router.push({ name: "home" });
     }
   }
 };
