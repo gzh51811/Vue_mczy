@@ -63,6 +63,42 @@ Router.post('/', urlencodedParser, jsonParser, (req, res) => {
             }
         }
 
+        //验证用户名是否已注册过
+        if (m == 'confirm_username') {
+            let { username } = req.body;
+            let res2 = await collecton.find({ username }).toArray();
+            
+            if (res2.length>0) {
+                res.send({
+                    msg: '用户名已被注册过',
+                    code: 404
+                });
+            }else {
+                res.send({
+                    msg: '用户名可以注册',
+                    code: 200
+                });
+            }
+        }
+
+        //验证用户名是否已注册过
+        if (m == 'register') {
+            let { username,password } = req.body;
+            let res2 = await collecton.insertOne({ username, password: md5(password) });
+            
+            if (res2) {
+                res.send({
+                    msg: '注册成功',
+                    code: 200
+                });
+            }else {
+                res.send({
+                    msg: '注册失败',
+                    code: 404
+                });
+            }
+        }
+
     });
 });
 
