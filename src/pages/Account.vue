@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="no-account" v-if="show_login">
-            <p><span @click="gotoLogin()">登录</span>/<span>注册</span></p>
+            <p><span @click="gotoLogin()">登录</span>/<span @click="gotoregister()">注册</span></p>
         </div>
 
       <ul class="mem-menu">
@@ -38,7 +38,7 @@
       <ul class="mem-menu">
         <li v-for="(item,idx) in iconfont_2" :key="idx">
           <a href="javascript:void(0)">
-            <i class="iconfont" :class="item.icon"></i>
+            <i class="iconfont" :class="item.icon"></i>
             {{item.text}}
           </a>
         </li>
@@ -134,6 +134,9 @@ export default {
         }else {
             this.$router.push({path: '/login'});
         }
+    },
+    gotoregister() {
+      this.$router.push({path: '/register'});
     }
   }
 };
