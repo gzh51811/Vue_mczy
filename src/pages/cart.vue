@@ -27,6 +27,17 @@
               <input type="checkbox" v-model="checkAll" class="allxz">国内保税仓
             </label>
           </div>
+          <img
+            src="./../assets/empty_cart.png"
+            alt
+            style="width:100%;display:block;"
+            v-show="goodslist.length<=0"
+          >
+          <span
+            style="display:block;width:100%;text-align:center;background:#fff;font-size:19px;line-height:80px;color:#ccc"
+            v-show="goodslist.length<=0"
+          >别让你的心意空空如也~</span>
+
           <li v-for="(goods,idx) in goodslist" :key="goods.goods_id">
             <label>
               <input
@@ -87,7 +98,7 @@
           <dl class="ui-cart-total-main">
             <dt>
               共
-              <span class="ui-color-pink" id="J_cartTotalProducts">{{qtytotle}}</span> 件商品
+              <span class="ui-color-pink" id="J_cartTotalProducts">{{moneytotle}}</span> 件商品
             </dt>
             <dd>
               商品应付金额
@@ -96,7 +107,7 @@
             <dd></dd>
           </dl>
           <div class="ui-cart-checkout-main">
-            <a href="javascript:;" class="ui-cart-checkout-btn" id="J_cartCheckout">结帐</a>
+            <a href="javascript:;" class="ui-cart-checkout-btn" id="J_cartCheckout" @click="pay">结帐</a>
           </div>
         </div>
       </div>
@@ -148,15 +159,28 @@ export default {
     }
   },
   methods: {
+    pay() {
+      this.$alert("暂未开通，敬请期待~", "", {
+        confirmButtonText: "确定",
+        callback: action => {}
+      });
+    },
     deletegoods(id, idx) {
-      this.goodslist.splice(idx, 1);
-      this.$axios
-        .post("http://localhost:4399/api/cart1", {
-          params: {
-            id
-          }
+      this.$confirm("确定要删除吗?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消"
+      })
+        .then(() => {
+          this.goodslist.splice(idx, 1);
+          this.$axios
+            .post("http://localhost:4399/api/cart1", {
+              params: {
+                id
+              }
+            })
+            .then(res => {});
         })
-        .then(res => {});
+        .catch(() => {});
     },
     select(idx) {
       // 获取idx在数组中的位置
