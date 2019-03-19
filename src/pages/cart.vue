@@ -27,6 +27,17 @@
               <input type="checkbox" v-model="checkAll" class="allxz">国内保税仓
             </label>
           </div>
+          <img
+            src="./../assets/empty_cart.png"
+            alt
+            style="width:100%;display:block;"
+            v-show="goodslist.length<=0"
+          >
+          <span
+            style="display:block;width:100%;text-align:center;background:#fff;font-size:19px;line-height:80px;color:#ccc"
+            v-show="goodslist.length<=0"
+          >别让你的心意空空如也~</span>
+
           <li v-for="(goods,idx) in goodslist" :key="goods.goods_id">
             <label>
               <input

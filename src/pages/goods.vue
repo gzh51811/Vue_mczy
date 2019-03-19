@@ -11,6 +11,7 @@
         </li>
       </ul>
     </header>
+
     <main v-for="goods in goodsinfo" :key="goods.goods_id">
       <div class="show_pic swipe" id="J_pt_slider" style="visibility: visible;">
         <!--<div class="" id="page_outer2" title="遮罩层"></div>-->
