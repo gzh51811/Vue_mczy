@@ -29,14 +29,16 @@ export default {
     //console.log(this.$route);
     let navigation = this.$route.name;
     switch (navigation) {
-      case "login":
+        case "login":
         this.headNavigation = "登录";
         break;
-      case "account":
+        case "account":
         this.headNavigation = "我的账户";
         break;
-
-      default:
+        case "register":
+        this.headNavigation = "注册";
+        break;
+        default:
         break;
     }
   },

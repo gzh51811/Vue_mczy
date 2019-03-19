@@ -9,9 +9,8 @@ import Cart from './../pages/cart.vue';
 import NotFound from './../pages/NotFound.vue';
 import Account from './../pages/Account.vue';
 import Login from './../pages/Login.vue';
-
+import Register from './../pages/Register.vue'
 import Goods from './../pages/goods.vue'
-
 import Home from "../pages/Home.vue";
 import Advertisement from "../pages/Advertisement.vue";
 
@@ -26,16 +25,22 @@ let router = new VueRouter({
         // 首页:当浏览器地址为path为home路径是时，自动渲染component对应组件
         {
             name: 'advertisement',
-            path: '/advertisement',
+            path: '/',
             component: Advertisement,
         },
+        
         {
-            name: 'Home',
+            name: 'register',
+            path: '/register',
+            component: Register
+        },
+        {
+            name: 'home',
             path: '/home',
             component: Home,
         },
         {
-            name: 'List',
+            name: 'list',
             path: '/list',
             component: List,
         },
@@ -43,9 +48,9 @@ let router = new VueRouter({
             name: 'cart',
             path: '/cart',
             component: Cart,
-            // meta: {
-            //     requiresAuth: true
-            // }
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             name: 'account',
@@ -61,7 +66,7 @@ let router = new VueRouter({
             component: Login,
 
         },
-        // 404
+       
         {
             name: 'goods',
             path: '/goods',
@@ -97,6 +102,25 @@ let router = new VueRouter({
         // }
     ]
 });
+
+//路由拦截
+router.beforeEach((to, from, next) => {
+    if (to.meta.requiresAuth) {
+        let token = localStorage.getItem('token');
+        if (token) {
+            next();
+        } else {
+            next({
+                path: '/login',
+                query: {
+                    redirect: to.fullPath
+                }
+            })
+        }
+    } else {
+        next();
+    }
+})
 
 
 export default router;
