@@ -120,7 +120,7 @@
         <section
           class="promo2mC"
           style="
-          background:url(../../../assets/images/promo3.jpg)no-repeat center 54px;background-size:65% auto;border-left:none"
+          background:url(../../../assets/images/promo3.jpg)no-repeat center 90%;background-size:65% auto;border-left:none"
         >
           <section class="promo2m_titleB">新人福利专场</section>
           <section class="promo2m_taglineB">领888元见面礼</section>
@@ -129,7 +129,7 @@
       <a href="javascript:void(0)">
         <section
           class="promo2mC"
-          style="background:url(../../../assets/images/promo4.jpg)no-repeat center 54px;background-size:65% auto;"
+          style="background:url(../../../assets/images/promo4.jpg)no-repeat center 90%;background-size:65% auto;"
         >
           <section class="promo2m_titleB">会员俱乐部</section>
           <section class="promo2m_taglineB">积分抵现计划</section>
@@ -138,7 +138,7 @@
       <a href="javascript:void(0)">
         <section
           class="promo2mC"
-          style="background:url(../../../assets/images/promo5.jpg)no-repeat center 54px;background-size:65% auto;"
+          style="background:url(../../../assets/images/promo5.jpg)no-repeat center 90%;background-size:65% auto;"
         >
           <section class="promo2m_titleB">VIP福利场</section>
           <section class="promo2m_taglineB">3月VIP尊享</section>
