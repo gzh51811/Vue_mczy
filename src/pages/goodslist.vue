@@ -156,7 +156,7 @@ export default {
       //  window.addEventListener("goodslist.timer", this.countdown);
     });
 
-    setInterval(() => {
+    this.timers=setInterval(() => {
       for (var i in this.goodslist) {
         //  var t=this.goodslist[i].promotion_end_time-this.goodslist[i].promotion_start_time;
         var t =
@@ -213,6 +213,9 @@ export default {
       
       }
     }, 1000);
+  },
+  destroyed(){
+    clearInterval(this.timers);
   },
 
   methods: {
