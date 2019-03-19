@@ -3,7 +3,7 @@
     <router-view></router-view>
     <BackTop>
       <BackTop :height="100" :bottom="60">
-        <div class="top">
+        <div class="backtop">
           <i class="iconfont icon-huidaodingbu"></i>
         </div>
       </BackTop>
