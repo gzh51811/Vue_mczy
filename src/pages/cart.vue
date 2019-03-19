@@ -107,7 +107,7 @@
             <dd></dd>
           </dl>
           <div class="ui-cart-checkout-main">
-            <a href="javascript:;" class="ui-cart-checkout-btn" id="J_cartCheckout">结帐</a>
+            <a href="javascript:;" class="ui-cart-checkout-btn" id="J_cartCheckout" @click="pay">结帐</a>
           </div>
         </div>
       </div>
@@ -159,15 +159,28 @@ export default {
     }
   },
   methods: {
+    pay() {
+      this.$alert("暂未开通，敬请期待~", "", {
+        confirmButtonText: "确定",
+        callback: action => {}
+      });
+    },
     deletegoods(id, idx) {
-      this.goodslist.splice(idx, 1);
-      this.$axios
-        .post("http://localhost:4399/api/cart1", {
-          params: {
-            id
-          }
+      this.$confirm("确定要删除吗?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消"
+      })
+        .then(() => {
+          this.goodslist.splice(idx, 1);
+          this.$axios
+            .post("http://localhost:4399/api/cart1", {
+              params: {
+                id
+              }
+            })
+            .then(res => {});
         })
-        .then(res => {});
+        .catch(() => {});
     },
     select(idx) {
       // 获取idx在数组中的位置
