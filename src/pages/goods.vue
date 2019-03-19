@@ -162,6 +162,7 @@
           </li>
         </ul>
       </div>
+      <div class="diandi2"></div>
     </main>
     <footer v-for="goods in goodsinfo" :key="goods.goods_id+1">
       <div class="show_foot_gwc" @click="tocart()">
@@ -216,6 +217,10 @@ export default {
     },
     add2cart() {
       let { id: id } = this.$route.query;
+      this.$alert("加入购物车成功", "", {
+        confirmButtonText: "确定",
+        callback: action => {}
+      });
       this.$axios
         .post("http://localhost:4399/api/goods", {
           params: {
@@ -227,10 +232,6 @@ export default {
           // console.log(res);
           // console.log(this.goodsinfo);
           this.getData1();
-          this.$alert("加入购物车成功", "", {
-            confirmButtonText: "确定",
-            callback: action => {}
-          });
         });
     },
     handleChange(value) {
@@ -597,9 +598,12 @@ body {
         }
       }
     }
+    .diandi2 {
+      height: 1.5rem;
+    }
   }
   footer {
-    height: 0.92 * 2rem;
+    height: 2rem;
     border-top: 1px solid #ccc;
     .show_foot_gwc {
       width: 0.8 * 2rem;
