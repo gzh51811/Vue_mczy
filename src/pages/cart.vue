@@ -87,7 +87,7 @@
           <dl class="ui-cart-total-main">
             <dt>
               共
-              <span class="ui-color-pink" id="J_cartTotalProducts">{{qtytotle}}</span> 件商品
+              <span class="ui-color-pink" id="J_cartTotalProducts">{{moneytotle}}</span> 件商品
             </dt>
             <dd>
               商品应付金额
