@@ -30,7 +30,7 @@
 
       <div class="login_reg">
         <a href="javascript:void(0)" class="btn-lnk">忘记密码？</a>|
-        <a href="javascript:void(0)" class="btn-lnk">立即注册</a>
+        <a href="" class="btn-lnk" @click="gotoreg()">立即注册</a>
       </div>
     </div>
     <!-- footer -->
@@ -119,11 +119,7 @@ export default {
         this.msg = data.msg;
       } else {
       }
-      let loginRes = MessageBox({
-        title: "提示",
-        message: this.msg,
-        showCancelButton: true
-      });
+      
 
       //登录成功
       if (this.msg == "登录成功") {
@@ -131,8 +127,24 @@ export default {
         //,}
         localStorage.setItem("username", data._username);
         localStorage.setItem("token", data._token);
-        //跳转主页
+       
+        //调回原来的页面
+        if(this.$route.params.from){
+            this.$router.push(this.$route.params.from);
+        }else{
+             //跳转主页
+             MessageBox.confirm('登录成功').then(action => {
+                        this.$router.push('/home');
+                });
+            
+        }
       }
+    },
+    //跳转注册页
+    gotoreg() {
+      this.$router.push({
+        path: '/register'
+      })
     }
   },
   mounted() {

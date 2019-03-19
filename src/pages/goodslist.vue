@@ -10,7 +10,7 @@
             <img src="../assets/images/shengxu.png" alt>
           </li>
           <li>
-            <img src="../assets/images/classify.png" alt>
+            <img src="../assets/images/classify.png" @click="fenlei()" alt>
           </li>
           <li>
             <img src="../assets/images/home.png" @click="home()" alt>
@@ -67,7 +67,8 @@ function Time(time) {
     new Date().getTime() +
     60 * 60 * 24 * 17900 * 60 * 60 -
     46480 * 24 * 60 * 60 * 1000;
-  t -= 1000;
+    if(t>0){
+      t -= 1000;
   // console.log(t);
 
   // let day,hr,min,sec = 0;
@@ -84,8 +85,26 @@ function Time(time) {
   // 控制台打印
 
   var date = `${day}天 ${hr}小时 ${min}分钟 ${sec}秒`;
+   return date;
+    }else{
+      t=0;
+       let day = parseInt(t / 1000 / 60 / 60 / 24);
+  let hr = parseInt((t / 1000 / 60 / 60) % 24);
+  let min = parseInt((t / 1000 / 60) % 60);
+  let sec = parseInt((t / 1000) % 60);
+  // 个位数前补零
+  day = day;
+  hr = hr > 9 ? hr : "0" + hr;
+  min = min > 9 ? min : "0" + min;
+  sec = sec > 9 ? sec : "0" + sec;
+  // 控制台打印
+
+  var date = `${day}天 ${hr}小时 ${min}分钟 ${sec}秒`;
+   return date;
+    }
+  
   // console.log(date)
-  return date;
+ 
 }
 
 export default {
@@ -137,7 +156,7 @@ export default {
       //  window.addEventListener("goodslist.timer", this.countdown);
     });
 
-    setInterval(() => {
+    this.timers=setInterval(() => {
       for (var i in this.goodslist) {
         //  var t=this.goodslist[i].promotion_end_time-this.goodslist[i].promotion_start_time;
         var t =
@@ -145,9 +164,8 @@ export default {
           new Date().getTime() +
           60 * 60 * 24 * 17900 * 60 * 60 -
           46480 * 24 * 60 * 60 * 1000;
-        // console.log(t);
-        // console.log(this.goodslist[i].promotion_end_time,new Date().getTime())
-        t -= 1000;
+          if(t>0){
+                t -= 1000;
         // 计算时分秒数
         let day = parseInt(t / 1000 / 60 / 60 / 24);
         let hr = parseInt((t / 1000 / 60 / 60) % 24);
@@ -168,8 +186,36 @@ export default {
         // return date;
 
         this.$forceUpdate();
+          }else{
+            t=0;
+             let day = parseInt(t / 1000 / 60 / 60 / 24);
+        let hr = parseInt((t / 1000 / 60 / 60) % 24);
+        let min = parseInt((t / 1000 / 60) % 60);
+        let sec = parseInt((t / 1000) % 60);
+        // 个位数前补零
+
+        day = day;
+        hr = hr > 9 ? hr : "0" + hr;
+        min = min > 9 ? min : "0" + min;
+        sec = sec > 9 ? sec : "0" + sec;
+        // // 控制台打印
+
+        var date = `${day}天 ${hr}小时 ${min}分钟 ${sec}秒`;
+
+        // this.$set(this.goodslist,"timer",date);
+        this.goodslist[i]["timer"] = date;
+        // return date;
+
+        this.$forceUpdate();
+          }
+        // console.log(t);
+        // console.log(this.goodslist[i].promotion_end_time,new Date().getTime())
+      
       }
     }, 1000);
+  },
+  destroyed(){
+    clearInterval(this.timers);
   },
 
   methods: {
@@ -188,7 +234,11 @@ export default {
     //点击跳到首页
     list() {
       // console.log(id);
-      this.$router.push("/list");
+      this.$router.go(-1);
+    },
+
+    fenlei(){
+       this.$router.push("list");
     },
 
     //价格保留一位小数
@@ -306,22 +356,6 @@ export default {
         }
       }
     }
-
-    //      countdown (time,len) {
-    //   // // 目标日期时间戳
-    //   // const end = Date.parse(new Date('2017-12-01'))
-    //   // // 当前时间戳
-    //   // const now = Date.parse(new Date())
-    //   // 相差的毫秒数
-
-    //   // this.timer = date;
-    //   //能打印时间，就是不能返到页面上//哪里减
-    //   // 一秒后递归
-
-    //   let msec = time;
-    //   let that = this;
-
-    // }
   }
 };
 </script>
@@ -362,8 +396,9 @@ html {
   margin-left: 0.613333rem;
 }
 .title {
-  font-size: 0.64rem;
+  font-size: .573333rem;
   color: #fff;
+  padding-left: 1.333333rem;
 }
 .header .header-bottom .icon {
   // width:.613333rem;

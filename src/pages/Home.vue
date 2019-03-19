@@ -718,7 +718,7 @@ export default {
 
     //跳转到列表页
     gotogoodlist() {
-      this.$router.push({ name: "goodslist" });
+      this.$router.push({ name: "list" });
     },
     // gotogoods(id) {
     //   this.$router.push({ name: "goods", query: { id }, params: { id } });
