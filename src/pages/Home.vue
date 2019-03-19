@@ -599,7 +599,7 @@ export default {
       //   this.$router.push({'/goods/'+id)
     },
     gotogoodlist() {
-      this.$router.push({ name: "goodslist" });
+      this.$router.push({ name: "list" });
     },
     // gotogoods(id) {
     //   this.$router.push({ name: "goods", query: { id }, params: { id } });
