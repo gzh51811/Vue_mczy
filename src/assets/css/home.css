@@ -62,7 +62,7 @@ header{
     text-align: center;
     vertical-align: middle;
     margin: 0 auto 0 17%;
-    margin-top: 3px;
+    margin-top: .1rem;
     display: inline-block;
 }
 
@@ -111,7 +111,7 @@ header{
 
 .promise_frame{
     width: 100%;
-    padding: 0px 0 0px;
+    padding: 0 0 0;
     margin-bottom: -.066667rem;
     background: white;
 }
@@ -266,7 +266,7 @@ header{
 }
  
 .promo2mA .promo2m_titleA {
-    font-size: 1.25em;
+    font-size: .4rem;
     float: left;
     padding: 7% 8% 0%;
     width: 80%;
@@ -276,7 +276,7 @@ header{
 
 
 .promo2mA .promo2m_taglineA {
-    font-size: .85em;
+    font-size: .1rem;
     float: left;
     padding: 0 8%;
     width: 80%;
@@ -285,12 +285,12 @@ header{
 }
 
 .promo2_go_btn {
-    font-size: .8em;
+    font-size: .1rem;
     color: white;
     float: left;
-    margin-top: 1.8em;
+    margin-top: .4rem;
     margin-left: 8%;
-    padding: .125rem .5rem;
+    padding: .125rem .3rem;
     background: #fc3f83;
     -webkit-border-radius: .9375rem;
     -moz-border-radius: .9375rem;
@@ -310,9 +310,9 @@ header{
 
 .promo2m_titleB {
     color: #000;
-    font-size: 1.25em;
+    font-size: .5rem;
     float: left;
-    padding: .5em 0 0;
+    padding: .3rem 0 0;
     width: 100%;
     text-align: center;
     font-weight: bold;
@@ -320,7 +320,7 @@ header{
 
 .promo2m_taglineB {
     color: #a3a3a3;
-    font-size: .85em;
+    font-size: .3rem;
     float: left;
     padding: 0;
     width: 100%;
@@ -340,7 +340,7 @@ header{
     width: 100%;
     /* height: 0.95625rem; */
     padding: 2% 0;
-    background-size: 1300px 21px;
+    /* background-size: 1300px 21px; */
 
 }
 
@@ -359,25 +359,26 @@ header{
 }
 .mustcheck_title {
     width: 100%;
-    height: 38px;
+    /* height: 38px; */
     padding: 4.5% 5%;
 }
 .mustcheck_titName {
-    font-size: 1.25em;
-    height: 20px;
-    line-height: 20px;
+    font-size: .5rem;
+    height: .7rem;
+    line-height: .7rem;
     color: #dc3f7e;
-    margin-bottom: 4px;
+    margin-bottom: .1rem;
+    font-weight: bold;
 }
 .mustcheck_subtitName {
     float: left;
 }
 .mustcheck_date, .mustcheck_subtitName {
-    font-size: 1.1em;
+    font-size:.4rem;
     color: #999;
-    height: 14px;
-    line-height: 14px;
-    font-weight: bold;
+    /* height: 14px; */
+    /* line-height: 14px; */
+    /* font-weight: bold; */
 }
 .mustcheck_date {
     float: right;
@@ -390,7 +391,7 @@ header{
     width: 100%;
     /* height: 0.95625rem; */
     padding: 2% 0;
-    background-size: 1300px 21px;
+    /* background-size: 1300px 21px; */
 
 }
 
@@ -421,7 +422,7 @@ header{
     left: 0;
     top: 0rem;
     background: url(../images/onsale.png) no-repeat;
-    background-size: 3em 3em;
+    background-size: 1.5rem 1.5rem;
     z-index: 1;
 }
 
@@ -444,7 +445,7 @@ header{
     /* line-height: 180%; */
     background-color: #000;
     color: #fff;
-    font-size: 0.9em;
+    font-size: 0.1rem;
     text-align: center;
     border-radius: .75rem;
     margin-top: 8%;
@@ -455,7 +456,7 @@ header{
     width: 100%;
     /* height: 35%; */
     overflow: hidden;
-    font-size: 1em;
+    font-size: .4rem;
     margin-top: 5%;
     word-break: break-all;
     overflow: hidden;
@@ -483,7 +484,7 @@ header{
     float: left;
     background-color: #ed3d7d;
     color: #fff;
-    font-size: 0.9em;
+    font-size: 0.3rem;
     text-align: center;
     margin: .3rem 0;
     /* line-height: 1rem; */
@@ -498,13 +499,13 @@ header{
 }
 
 .limit_lg_selected_price_cur {
-    font-size: 1.2em;
+    font-size: .4rem;
     color: #ed3d7d;
     font-family: "Arial";
 }
 
 .limit_lg_selected_price_old {
-    font-size: 0.9em;
+    font-size: .3rem;
     color: #999;
     text-indent: .3125rem;
     height: 1.5625rem;
@@ -539,10 +540,10 @@ header{
 
 .limit_lg_more {
     width: 100%;
-    height: 1rem;
+    /* height: 1rem; */
     line-height: 1rem;
     text-align: center;
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
     background-color: #fff;
     border-bottom: .3rem solid #eee;
 }
@@ -551,12 +552,13 @@ header{
     display: block;
     color: #a3a3a3;
     text-decoration: none!important;
+    border: 1px solid #ccc;
 }
 
 .demo-spin-container{
     display: inline-block;
-    width: 200px;
-    height: 100px;
+    /* width: 200px; */
+    /* height: 100px; */
     position: relative;
     border: 1px solid #eee;
 }
@@ -582,11 +584,11 @@ header{
 .ranking_title {
     width: 90%;
     padding: 0 5%;
-    height: 3.5em;
-    line-height: 3.5em;
+    height: 1.5rem;
+    line-height: 1.5rem;
     color: #a3a3a3;
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: .5rem;
 }
 
 .ranking_productlist {
@@ -597,9 +599,9 @@ header{
 }
 
 .ranking_product {
-    width: 92px;
-    height: 150px;
-    margin-right: 10px;
+    width: 3rem;
+    /* height: 150px; */
+    margin-right: .2rem;
     display: inline-block;
     position: relative;
     background: #fff;
@@ -608,16 +610,16 @@ header{
 
 
 .ranking_product_img_wrapper {
-    width: 80px;
-    height: 80px;
-    margin-left: 6px;
+    /* width: 80px; */
+    /* height: 80px; */
+    margin-left: .3rem;
     overflow: hidden;
     background: #fff;
 }
 
 .ranking_product_img_wrapper img{
-    width: 80px;
-    height: 80px;
+    width: 2rem;
+    height: 2rem;
 }
 .ranking_product_img {
     width: 100%;
@@ -626,12 +628,12 @@ header{
 
 .ranking_product_intro {
     width: 100%;
-    height: 2.73em;
+    height: .9rem;
     overflow: hidden;
-    line-height: 1.4em;
-    font-size: 0.9em;
+    /* line-height: .9rem; */
+    font-size: .3rem;
     color: #666;
-    margin-top: 10px;
+    margin-top: .3rem;
     word-break: break-all;
     overflow: hidden;
     display: -webkit-box;
@@ -643,12 +645,12 @@ header{
 
 .ranking_product_price {
     width: 100%;
-    height: 14px;
-    line-height: 14px;
+    height: .5rem;
+    line-height: .5rem;
     overflow: hidden;
-    margin-top: 6px;
+    margin-top: .2rem;
     font-family: "Arial";
-    font-size: 1em;
+    font-size: .3rem;
 }
 
 .ranking_product_price_cur{
@@ -716,7 +718,7 @@ footer .lastlist li {
     /* color: black; */
     text-align: center;
     border-radius: 0.3125rem;
-    box-shadow: 0px 0px 0.5em 0.15em #ddd;
+    box-shadow: 0 0 0.5rem 0.1rem #ddd;
   }
   .ivu-back-top {
     z-index: 999;
