@@ -705,6 +705,19 @@ export default {
         }
         this.$forceUpdate();
       }, 1500);
+      this.limit;
+      this.page++;
+      this.$axios
+        .get("http://localhost:4399/api/home", {
+          params: {
+            page: this.page,
+            limit: this.limit
+          }
+        })
+        .then(res => {
+          let data = res.data;
+          this.goodslist = data;
+        });
     },
 
     //传参给详情页
