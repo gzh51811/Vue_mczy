@@ -290,7 +290,7 @@ header{
     float: left;
     margin-top: .4rem;
     margin-left: 8%;
-    padding: .125rem .3rem;
+    padding: .1rem .2rem;
     background: #fc3f83;
     -webkit-border-radius: .9375rem;
     -moz-border-radius: .9375rem;
@@ -427,7 +427,7 @@ header{
 }
 
 .limit_lg_selected_right {
-    width: 42%;
+    width: 4.5rem;
     height: auto;
     position: absolute;
     right: 0;
@@ -439,9 +439,10 @@ header{
 
 .limit_lg_selected_countdown {
     overflow: hidden;
-    padding: 0 .1rem;
+    padding: 0 .1rem;   
+    width: 100%;
     /* 0.625 */
-    height: 5%;
+    height: .6rem;
     /* line-height: 180%; */
     background-color: #000;
     color: #fff;
