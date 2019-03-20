@@ -283,7 +283,7 @@ header{
     color: #a3a3a3;
     margin-top: .125rem;
     overflow: hidden;
-    height: .4rem;
+    height: .5rem;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -296,7 +296,7 @@ header{
     float: left;
     margin-top: .4rem;
     margin-left: .4rem;
-    padding: .1rem .2rem;
+    padding: .1rem .1rem;
     background: #fc3f83;
     -webkit-border-radius: .9375rem;
     -moz-border-radius: .9375rem;

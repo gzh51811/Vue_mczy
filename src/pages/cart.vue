@@ -173,6 +173,7 @@ export default {
       })
         .then(() => {
           this.goodslist.splice(idx, 1);
+          this.selected.length=0;
 
           this.$axios
             .post("http://localhost:4399/api/cart1", {
