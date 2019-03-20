@@ -268,8 +268,8 @@ header{
 .promo2mA .promo2m_titleA {
     font-size: .4rem;
     float: left;
-    padding: 7% 8% 0%;
-    width: 80%;
+    padding: .2rem .4rem 0;
+    /* width: 80%; */
     font-weight: bold;
     color: #000;
 }
@@ -278,10 +278,16 @@ header{
 .promo2mA .promo2m_taglineA {
     font-size: .1rem;
     float: left;
-    padding: 0 8%;
-    width: 80%;
+    padding: 0 .2rem;
+    width: 3rem;
     color: #a3a3a3;
     margin-top: .125rem;
+    overflow: hidden;
+    height: .4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
 }
 
 .promo2_go_btn {
@@ -289,7 +295,7 @@ header{
     color: white;
     float: left;
     margin-top: .4rem;
-    margin-left: 8%;
+    margin-left: .4rem;
     padding: .1rem .2rem;
     background: #fc3f83;
     -webkit-border-radius: .9375rem;
