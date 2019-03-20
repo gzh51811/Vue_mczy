@@ -90,9 +90,10 @@
             </div>
           </li>
         </ul>
+        <dir class="diandi"></dir>
       </div>
     </main>
-    <footer>
+    <footer class="footer1">
       <div class="ui-cart-total" id="J_cartTotalCont">
         <div class="ui-cart-total-wp c-fix">
           <dl class="ui-cart-total-main">
@@ -172,6 +173,7 @@ export default {
       })
         .then(() => {
           this.goodslist.splice(idx, 1);
+          this.getData3();
           this.$axios
             .post("http://localhost:4399/api/cart1", {
               params: {
@@ -209,22 +211,24 @@ export default {
           }
         })
         .then(res => {});
+    },
+    async getData3() {
+      let { id: id } = this.$route.query;
+      this.$axios
+        .get("http://localhost:4399/api/cart", {
+          params: {
+            id
+          }
+        })
+        .then(res => {
+          let arr = res.data;
+          this.goodslist = arr;
+        });
     }
   },
 
   created() {
-    let { id: id } = this.$route.query;
-    this.$axios
-      .get("http://localhost:4399/api/cart", {
-        params: {
-          id
-        }
-      })
-      .then(res => {
-        // console.log(res);
-        let arr = res.data;
-        this.goodslist = arr;
-      });
+    this.getData3();
   }
 };
 </script>
@@ -429,11 +433,15 @@ body {
         }
       }
     }
+    .diandi {
+      height: 1.293333 * 2rem;
+    }
   }
-  footer {
+  .footer1 {
     height: 1.293333 * 2rem;
+    display: flex;
     .ui-cart-total {
-      padding-top: 0.293333 * 2rem;
+      padding-top: 0.103333 * 2rem;
       .ui-cart-total-wp {
         padding: 0.186667 * 2rem;
         background-color: #fff;

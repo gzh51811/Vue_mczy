@@ -162,6 +162,7 @@
           </li>
         </ul>
       </div>
+      <div class="diandi2"></div>
     </main>
     <footer v-for="goods in goodsinfo" :key="goods.goods_id+1">
       <div class="show_foot_gwc" @click="tocart()">
@@ -170,7 +171,7 @@
           style="display:block;position:absolute;bottom:20px;left:20px; width:30px;height:30px;"
         ></div>
         <i class="iconfont icon-caigou-xianxing"></i>
-        <el-badge :value="3" class="item"></el-badge>
+        <el-badge :value="cartlist" class="item"></el-badge>
       </div>
       <span class="show_red">
         <b class="font_money J_cart_price">¥{{parseFloat(goods.price*num1).toFixed(0)}}</b>
@@ -188,6 +189,7 @@ import "./../assets/font_17z3eh9wblg/iconfont.css";
 export default {
   data() {
     return {
+      cartlist: 1,
       num1: 1,
       goodsinfo: []
     };
@@ -198,7 +200,11 @@ export default {
       this.getData();
     }
   },
-  computed: {},
+  computed: {
+    // goodsQty() {
+    //   return this.$store.state.cartlist.length;
+    // }
+  },
   methods: {
     tui() {
       this.$router.go(-1);
@@ -211,6 +217,10 @@ export default {
     },
     add2cart() {
       let { id: id } = this.$route.query;
+      this.$alert("加入购物车成功", "", {
+        confirmButtonText: "确定",
+        callback: action => {}
+      });
       this.$axios
         .post("http://localhost:4399/api/goods", {
           params: {
@@ -221,10 +231,7 @@ export default {
         .then(res => {
           // console.log(res);
           // console.log(this.goodsinfo);
-          this.$alert("加入购物车成功", "", {
-            confirmButtonText: "确定",
-            callback: action => {}
-          });
+          this.getData1();
         });
     },
     handleChange(value) {
@@ -247,11 +254,21 @@ export default {
 
           // console.log(this.goodsinfo);
         });
+    },
+    async getData1() {
+      this.$axios
+        .get("http://localhost:4399/api/cart", {
+          params: {}
+        })
+        .then(res => {
+          let arr = res.data;
+          this.cartlist = arr.length;
+        });
     }
   },
-
   mounted() {
     this.getData();
+    this.getData1();
   }
 };
 </script>
@@ -581,9 +598,12 @@ body {
         }
       }
     }
+    .diandi2 {
+      height: 1.5rem;
+    }
   }
   footer {
-    height: 0.92 * 2rem;
+    height: 2rem;
     border-top: 1px solid #ccc;
     .show_foot_gwc {
       width: 0.8 * 2rem;
