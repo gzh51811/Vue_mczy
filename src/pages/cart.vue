@@ -173,14 +173,16 @@ export default {
       })
         .then(() => {
           this.goodslist.splice(idx, 1);
-          this.getData3();
+
           this.$axios
             .post("http://localhost:4399/api/cart1", {
               params: {
                 id
               }
             })
-            .then(res => {});
+            .then(res => {
+              this.getData3();
+            });
         })
         .catch(() => {});
     },
