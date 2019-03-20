@@ -96,7 +96,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 // @import "../assets/css/home.css";
-@import "../assets/iconfont/iconfont.css";
+// @import "../assets/iconfont/iconfont.css";
 body,
 html {
   width: 100%;
@@ -122,7 +122,7 @@ img {
   justify-content: center;
   align-items: center;
   font-size: 0.533333rem;
-  height: 1.093333rem;
+  height: 1.333333rem;
   background: #ed3f7e;
   color: #fff;
 }

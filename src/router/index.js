@@ -35,7 +35,7 @@ let router = new VueRouter({
             component: Register
         },
         {
-            name: 'home',
+            name: 'Home',
             path: '/home',
             component: Home,
         },
